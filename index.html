@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavoraMI - Il compagno di viaggio per i pendolari</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --accent: #ff4757; /* Rosso dell'app */
+            --accent-hover: #e84142;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --gradient: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY & UTILS --- */
+        .text-accent { color: var(--accent); }
+        .bg-accent { background-color: var(--accent); }
+        
+        .glass-card {
+            background: rgba(30, 30, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            padding: 120px 0 80px;
+            background: radial-gradient(circle at top right, #2a1010 0%, #0a0a0a 60%);
+            position: relative;
+        }
+
+        .hero-title span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- PHONE MOCKUP (CSS ONLY) --- */
+        /* Ricrea l'interfaccia vista nel PDF */
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            border: 8px solid #333;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #333;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            z-index: 10;
+        }
+
+        .app-header {
+            padding: 40px 20px 10px;
+            background: #000;
+        }
+
+        .app-card {
+            background: #1c1c1e;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 15px;
+            font-size: 0.8rem;
+        }
+
+        .badge-line {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            margin-right: 3px;
+        }
+        .line-s5 { background: #9b59b6; color: white; }
+        .line-s6 { background: #3498db; color: white; }
+
+        .progress-container {
+            height: 4px;
+            background: #333;
+            border-radius: 2px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar-custom {
+            height: 100%;
+            background: var(--gradient);
+            width: 35%; /* Simulazione progresso */
+        }
+
+        /* --- BUTTONS --- */
+        .btn-download {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+        .btn-download:hover { opacity: 0.9; color: white; }
+
+        .btn-outline-custom {
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        .btn-outline-custom:hover { background: white; color: black; }
+
+        /* --- SECTIONS --- */
+        .section-title {
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        footer {
+            border-top: 1px solid #222;
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(10,10,10,0.9); backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-cone-striped text-accent"></i> LavoraMI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#funzionalita">Funzionalità</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#scioperi">Scioperi</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#roadmap">Roadmap</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <a href="#" class="btn btn-sm btn-download">Scarica App</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="text-uppercase text-accent fw-bold letter-spacing-2">Mai più in ritardo</span>
+                    <h1 class="display-3 fw-bolder hero-title mt-2 mb-4">
+                        Il viaggio perfetto<br>inizia <span>informandosi</span>.
+                    </h1>
+                    <p class="lead text-muted mb-5">
+                        Vivi nell'Hinterland e lavori a Milano? Scopri in anticipo cantieri, deviazioni e scioperi sulla tua linea. Evita le sorprese prima di arrivare in stazione.
+                    </p>
+                    <div class="d-flex gap-3 flex-column flex-sm-row">
+                        <button class="btn btn-download shadow-lg"><i class="bi bi-apple me-2"></i>App Store</button>
+                        <button class="btn btn-outline-custom"><i class="bi bi-google-play me-2"></i>Google Play</button>
+                    </div>
+                    <div class="mt-4 text-muted small">
+                        *Disponibile per linee Trenord, ATM, Movibus e altre.
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="phone-mockup">
+                        <div class="phone-notch"></div>
+                        
+                        <div class="app-header">
+                            <h4 class="fw-bold mb-0">Lavori in corso</h4>
+                            <div class="d-flex gap-2 mt-3 overflow-auto">
+                                <span class="badge bg-accent rounded-pill">Tutti</span>
+                                <span class="badge bg-secondary bg-opacity-25 rounded-pill">Bus</span>
+                                <span class="badge bg-secondary bg-opacity-25 rounded-pill">Metro</span>
+                            </div>
+                        </div>
+
+                        <div class="app-content mt-2">
+                            
+                            <div class="app-card border-start border-4 border-danger">
+                                <div class="d-flex justify-content-between mb-2">
+                                    <strong class="text-white"><i class="bi bi-cone-striped me-1"></i> Interruzione Tratta</strong>
+                                    <i class="bi bi-chevron-down text-muted"></i>
+                                </div>
+                                <div class="text-muted small mb-2"><i class="bi bi-geo-alt"></i> Rho - Gallarate</div>
+                                <div class="mb-2">
+                                    <span class="badge-line line-s5">S5</span>
+                                    <span class="badge-line line-s6">S6</span>
+                                    <span class="badge-line bg-secondary">RE4</span>
+                                </div>
+                                <div class="progress-container">
+                                    <div class="progress-bar-custom"></div>
+                                </div>
+                                <div class="d-flex justify-content-between small text-muted">
+                                    <span>26 dic 2025</span>
+                                    <span>1 feb 2026</span>
+                                </div>
+                                <div class="mt-2 text-white small">
+                                    Trenord: Lavori di potenziamento infrastrutturale. Interruzione circolazione.
+                                </div>
+                            </div>
+
+                            <div class="app-card border border-danger bg-danger bg-opacity-10">
+                                <div class="text-danger fw-bold mb-1"><i class="bi bi-exclamation-triangle-fill"></i> AVVISO SCIOPERO</div>
+                                <p class="text-white small mb-1">Proclamato per il 12/01/2026.</p>
+                                <p class="text-muted small fst-italic mb-0">Fasce garantite: 06-09, 18-21</p>
+                            </div>
+
+                        </div>
+                        
+                        <div style="position: absolute; bottom: 0; width: 100%; padding: 20px; background: #111; display: flex; justify-content: space-around; border-top: 1px solid #333;">
+                            <i class="bi bi-house-door-fill text-accent"></i>
+                            <i class="bi bi-signpost-split text-muted"></i>
+                            <i class="bi bi-gear text-muted"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="funzionalita" class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <h2 class="section-title display-6">Tutto sotto controllo</h2>
+                    <p class="text-muted">Progettata specificamente per chi si muove nell'area metropolitana di Milano[cite: 4, 46].</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="glass-card h-100">
+                        <i class="bi bi-bar-chart-steps feature-icon"></i>
+                        <h4>Barra di Progresso</h4>
+                        <p class="text-muted small">Unica nel suo genere. Vedi visivamente a che punto sono i lavori e quando è prevista la fine del disagio.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card h-100">
+                        <i class="bi bi-building-exclamation feature-icon"></i>
+                        <h4>Dettagli Cantieri</h4>
+                        <p class="text-muted small">Non solo "ritardo". Ti spieghiamo se è un'interruzione tratta, fermata sospesa o deviazione per lavori stradali[cite: 68].</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card h-100">
+                        <i class="bi bi-bell-fill feature-icon"></i>
+                        <h4>Notifiche Mirate</h4>
+                        <p class="text-muted small">Ti avvisiamo il giorno prima della fine dei lavori o quando spuntano nuovi cantieri sulla tua linea preferita[cite: 102].</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scioperi" class="py-5 bg-black">
+        <div class="container">
+            <div class="row align-items-center rounded-4 p-5" style="background: linear-gradient(to right, #1a0505, #000); border: 1px solid #330000;">
+                <div class="col-lg-6">
+                    <span class="badge bg-danger mb-3">Funzione Chiave</span>
+                    <h2 class="fw-bold mb-4">Basta girare 3 siti diversi per uno sciopero.</h2>
+                    <p class="text-muted mb-4">
+                        Solitamente devi controllare il sito di ATM, poi quello di Trenord e infine quello di Movibus. 
+                        <strong>LavoraMI centralizza tutto.</strong>
+                    </p>
+                    <ul class="list-unstyled">
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-accent me-3"></i>
+                            <div>
+                                <strong>Fasce di Garanzia chiare</strong> [cite: 6]
+                                <div class="small text-muted">Sai esattamente quando i treni partiranno.</div>
+                            </div>
+                        </li>
+                        <li class="mb-3 d-flex align-items-center">
+                            <i class="bi bi-check-circle-fill text-accent me-3"></i>
+                            <div>
+                                <strong>Tutte le aziende in una vista</strong> [cite: 7]
+                                <div class="small text-muted">ATM, Trenord, STAV, Autoguidovie, Movibus.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-5 offset-lg-1 text-center">
+                    <div class="p-4 rounded-circle border border-danger d-inline-flex align-items-center justify-content-center" style="width: 200px; height: 200px; box-shadow: 0 0 50px rgba(255, 71, 87, 0.2);">
+                        <div>
+                            <div class="display-4 fw-bold text-accent">100%</div>
+                            <div class="text-uppercase small text-white">Informati</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-5">
+        <div class="container">
+            <h3 class="fw-bold mb-5 text-center">Il futuro di LavoraMI <span class="text-muted fw-light">(In arrivo)</span></h3>
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-dark p-3 rounded-3 me-3 border border-secondary">
+                            <i class="bi bi-map text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold">Mappa Interattiva</h5>
+                            <p class="text-muted small">Visualizzazione geografica di tutti i cantieri nell'area di Milano[cite: 104].</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="d-flex align-items-start mb-4">
+                        <div class="bg-dark p-3 rounded-3 me-3 border border-secondary">
+                            <i class="bi bi-sign-turn-right text-white"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold">Pianifica Viaggio</h5>
+                            <p class="text-muted small">Un navigatore che calcola il percorso evitando le tratte interrotte[cite: 105].</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <h4 class="fw-bold mb-3"><i class="bi bi-cone-striped text-accent"></i> LavoraMI</h4>
+            <p class="text-muted small mb-4">Dati basati su comunicazioni ufficiali delle aziende di trasporto.</p>
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="#" class="text-muted"><i class="bi bi-instagram fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-facebook fs-5"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-twitter fs-5"></i></a>
+            </div>
+            <p class="small text-muted opacity-50">&copy; 2026 LavoraMI Project. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
