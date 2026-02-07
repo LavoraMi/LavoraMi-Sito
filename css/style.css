@@ -41,7 +41,9 @@ body {
 .hero-title span {
     background: var(--accent);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 .phone-mockup {
@@ -91,7 +93,7 @@ body {
 }
 .line-s5 { background: #ff7b00; color: white; }
 .line-s6 { background: #ffc400; color: white; }
-.line-re4 { background:rgb(224, 11, 11)0; color: white; }
+.line-re4 { background:rgb(224, 11, 11); color: white; }
 
 .progress-container {
     height: 4px;
@@ -244,3 +246,190 @@ footer {
     line-height: 1.4;
     margin: 0;
 }
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Sopra a tutto, anche alla navbar */
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pulse-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.loader-line {
+    width: 100px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader-line::after {
+    content: "";
+    position: absolute;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    animation: loadingLine 1.5s infinite;
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+@keyframes loadingLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+body.light-mode {
+    --bg-dark: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #4a4a4a;
+}
+
+
+body.light-mode .glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+
+body.light-mode .hero-section {
+    background: radial-gradient(circle at top right, #ffe5e5 0%, #f8f9fa 60%);
+}
+
+body.light-mode .text-white {
+    color: var(--text-main) !important;
+}
+
+
+.section-scioperi {
+    background-color: var(--bg-dark);
+}
+
+.card-scioperi {
+    background: linear-gradient(to right, #1a0505, #000);
+    border: 1px solid #330000;
+}
+
+
+body.light-mode .section-scioperi {
+    background-color: var(--bg-dark);
+}
+
+body.light-mode .card-scioperi {
+  
+    background: linear-gradient(to right, #fff5f5, #ffffff);
+    border: 1px solid #ffcccc;
+    color: var(--text-main);
+}
+
+
+body.light-mode .card-scioperi .text-white {
+    color: var(--text-main) !important;
+}
+
+/* --- STILE BASE (DARK MODE) --- */
+.sciopero-circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: rgba(255, 0, 21, 0.05);
+    box-shadow: 0 0 40px rgba(255, 0, 21, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-text {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+
+body.light-mode .sciopero-circle {
+    background: rgba(255, 0, 21, 0.02);
+    border: 2px solid rgba(255, 0, 21, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+}
+
+body.light-mode .info-text {
+    color: var(--text-main); 
+}
+
+
+.sciopero-circle {
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255, 0, 21, 0.1); }
+    to { box-shadow: 0 0 50px rgba(255, 0, 21, 0.3); }
+}
+
+
+#screenshots .section-title {
+    color: var(--text-main);
+}
+
+.screenshot-subtitle {
+    color: var(--text-muted);
+}
+
+.screenshot-caption h5 {
+    color: var(--text-main); 
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.screenshot-caption p {
+    color: var(--text-muted); 
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+
+
+body.light-mode #screenshots {
+    background-color: var(--bg-dark); 
+}
+
+
+body.light-mode .screenshot-item img {
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
