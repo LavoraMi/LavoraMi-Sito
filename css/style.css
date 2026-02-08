@@ -1,6 +1,8 @@
 :root {
     --bg-dark: #0a0a0a;
     --bg-card: #161616;
+    --navbar-black: rgba(10,10,10,0.9);
+    --navbar-light: #c73b3b;
     --accent: #ff0015;
     --accent-hover: #ff0303;
     --text-main: #ffffff;
@@ -14,6 +16,9 @@ body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
 }
+
+nav{background: var(--navbar-black);}
+body.light-mode nav{background: var(--navbar-light);}
 
 .text-accent { color: var(--accent); }
 .bg-accent { background-color: var(--accent); }
@@ -194,9 +199,7 @@ footer {
     transition: transform 0.3s ease;
 }
 
-.screenshot-item:hover {
-    transform: translateY(-10px);
-}
+.screenshot-item:hover {transform: translateY(-10px);}
 
 .screenshot-item img {
     width: 100%;
@@ -257,7 +260,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Sopra a tutto, anche alla navbar */
+    z-index: 9999;
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
@@ -327,29 +330,16 @@ body.light-mode .glass-card {
 }
 
 
-body.light-mode .hero-section {
-    background: radial-gradient(circle at top right, #ffe5e5 0%, #f8f9fa 60%);
-}
-
-body.light-mode .text-white {
-    color: var(--text-main) !important;
-}
-
-
-.section-scioperi {
-    background-color: var(--bg-dark);
-}
+body.light-mode .hero-section {background: radial-gradient(circle at top right, #ffe5e5 0%, #f8f9fa 60%);}
+body.light-mode .text-white {color: var(--text-main) !important;}
+.section-scioperi {background-color: var(--bg-dark);}
 
 .card-scioperi {
     background: linear-gradient(to right, #1a0505, #000);
     border: 1px solid #330000;
 }
 
-
-body.light-mode .section-scioperi {
-    background-color: var(--bg-dark);
-}
-
+body.light-mode .section-scioperi {background-color: var(--bg-dark);}
 body.light-mode .card-scioperi {
   
     background: linear-gradient(to right, #fff5f5, #ffffff);
@@ -357,12 +347,8 @@ body.light-mode .card-scioperi {
     color: var(--text-main);
 }
 
+body.light-mode .card-scioperi .text-white {color: var(--text-main) !important;}
 
-body.light-mode .card-scioperi .text-white {
-    color: var(--text-main) !important;
-}
-
-/* --- STILE BASE (DARK MODE) --- */
 .sciopero-circle {
     width: 200px;
     height: 200px;
@@ -385,10 +371,7 @@ body.light-mode .sciopero-circle {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
 }
 
-body.light-mode .info-text {
-    color: var(--text-main); 
-}
-
+body.light-mode .info-text { color: var(--text-main); }
 
 .sciopero-circle {
     animation: glow 3s infinite alternate;
@@ -400,13 +383,8 @@ body.light-mode .info-text {
 }
 
 
-#screenshots .section-title {
-    color: var(--text-main);
-}
-
-.screenshot-subtitle {
-    color: var(--text-muted);
-}
+#screenshots .section-title {color: var(--text-main);}
+.screenshot-subtitle {color: var(--text-muted);}
 
 .screenshot-caption h5 {
     color: var(--text-main); 
@@ -422,14 +400,5 @@ body.light-mode .info-text {
     margin: 0;
 }
 
-
-
-body.light-mode #screenshots {
-    background-color: var(--bg-dark); 
-}
-
-
-body.light-mode .screenshot-item img {
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
+body.light-mode #screenshots {background-color: var(--bg-dark); }
+body.light-mode .screenshot-item img {border: 1px solid rgba(0,0,0,0.05);}
