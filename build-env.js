@@ -6,3 +6,5 @@ const configContent = `const ENV = {
 };`;
 
 fs.writeFileSync('./config.js', configContent);
+console.log("SUPABASE URL: " + process.env.SUPABASE_URL)
+console.log("SUPABASE ANON: " + process.env.SUPABASE_ANON_KEY)
