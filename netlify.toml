@@ -1,8 +1,3 @@
 [build]
-  command = "echo \"window.ENV = { SUPABASE_URL: '$SUPABASE_URL', SUPABASE_KEY: '$SUPABASE_KEY' };\" > config.js"
+  command = "echo 'const ENV = { SUPABASE_URL: \"'$SUPABASE_URL'\", SUPABASE_ANON_KEY: \"'$SUPABASE_ANON_KEY'\" };' > config.js"
   publish = "."
-  environment = ["SUPABASE_URL", "SUPABASE_KEY"]
-
-[env]
-  [env.production]
-    SECRETS_SCAN_OMIT_PATHS = "config.js"
