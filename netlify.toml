@@ -1,8 +1,8 @@
 [build]
   command = "echo \"window.ENV = { SUPABASE_URL: '$SUPABASE_URL', SUPABASE_KEY: '$SUPABASE_KEY' };\" > config.js"
   publish = "."
+  environment = ["SUPABASE_URL", "SUPABASE_KEY"]
 
-[[headers]]
-  for = "/config.js"
-  [headers.values]
-    Content-Type = "application/javascript"
+[env]
+  [env.production]
+    SECRETS_SCAN_OMIT_PATHS = "config.js"
