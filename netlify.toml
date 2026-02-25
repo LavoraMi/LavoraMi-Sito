@@ -1,3 +1,0 @@
-[build]
-  command = "echo 'window.ENV = { SUPABASE_URL: \"$SUPABASE_URL\", SUPABASE_KEY: \"$SUPABASE_KEY\" };' > public/config.js"
-  publish = "."
