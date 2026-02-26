@@ -60,8 +60,7 @@ window.addEventListener('load', async () => {
     }
 
     console.log('[ℹ️INFO] User: ', user.email);
-    document.getElementById('userEmail').textContent = user.email;
-    document.getElementById('userInfo').classList.remove('d-none');
     document.getElementById('errorMessage').classList.add('d-none');
     document.getElementById('resetPasswordForm').style.display = 'block';
+    document.getElementById('successMessage').classList.remove('d-none');
 });
