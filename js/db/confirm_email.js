@@ -6,8 +6,6 @@ function showError(message) {
     console.error('[❌ ERROR]:', message);
     document.getElementById('errorText').textContent = message;
     document.getElementById('errorMessage').classList.remove('d-none');
-    document.getElementById('resetPasswordForm').style.display = 'none';
-    document.getElementById('userInfo').classList.add('d-none');
 }
 
 //*ON LOAD EVENT
@@ -61,6 +59,5 @@ window.addEventListener('load', async () => {
 
     console.log('[ℹ️INFO] User: ', user.email);
     document.getElementById('errorMessage').classList.add('d-none');
-    document.getElementById('resetPasswordForm').style.display = 'block';
     document.getElementById('successMessage').classList.remove('d-none');
 });
