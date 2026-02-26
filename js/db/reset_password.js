@@ -111,7 +111,7 @@ window.addEventListener('load', async () => {
     const user = data?.user;
 
     if (!user) {
-        showError('Sessione non valida.');
+        showError('Sessione utente non valida.');
         return;
     }
 

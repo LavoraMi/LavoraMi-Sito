@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Modifica Password - LavoraMi</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+        <link rel="icon" href="../img/icon.webp">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/reset_password.css">
+    </head>
+    <body>
+        <div id="preloader">
+            <div class="loader-content">
+                <img src="../img/icon.webp" alt="LavoraMI Logo" class="pulse-logo">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-dark fixed-top">
+            <div class="container justify-content-center">
+                <a class="navbar-brand fw-bold m-0" href="#">
+                    <img src="../img/icon.webp" alt="Icon" height="30px" width="30px" class="rounded" draggable="false">&nbsp; LavoraMi
+                </a>
+            </div>
+        </nav>
+
+        <div class="auth-wrapper">
+            <div class="auth-card text-center">
+                <h2>Conferma Email</h2>
+                <p>Conferma la tua mail per creare un account su LavoraMi.</p>
+
+                <div id="successMessage" class="alert alert-success alert-message d-none" role="alert">
+                    <i class="bi bi-check-circle"></i> Email confermata con successo! Ora puoi chiudere questa pagina.
+                </div>
+
+                <div id="errorMessage" class="alert alert-danger alert-message d-none" role="alert">
+                    <i class="bi bi-exclamation-circle"></i> <span id="errorText"></span>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.98.0"></script>
+        <script src="/config.js"></script><script src="../js/db/confirm_email.js"></script>
+    </body>
+</html>
