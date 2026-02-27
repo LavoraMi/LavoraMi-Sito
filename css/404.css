@@ -1,6 +1,7 @@
 :root {
     --bg-dark: #0a0a0a;
-    --accent: #ff4757; 
+    --accent: #ff4757;
+    --accent-cone: #fc818b;
     --text-main: #ffffff;
     --gradient: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
 }
@@ -51,7 +52,7 @@ body {
 
 .status-badge {
     background-color: rgba(255, 71, 87, 0.15);
-    color: var(--accent);
+    color: var(--accent-cone);
     padding: 5px 15px;
     border-radius: 50px;
     font-weight: bold;
