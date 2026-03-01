@@ -12,6 +12,19 @@
     const btnLoader = document.getElementById('btnLoader');
     const feedback = document.getElementById('waitlistFeedback');
     const btn = document.getElementById('waitlistBtn');
+    const subscriberCount = document.getElementById('subscriberCount');
+
+    const brevoRes = await fetch('https://api.brevo.com/v3/contacts/lists', {
+        headers: {
+        'api-key': secret,
+        'Content-Type': 'application/json'
+        }
+    });
+
+    const data = await brevoRes.json();
+    const lista = data.lists.find(l => l.id === BREVO_LIST_ID);
+    const totale = lista.totalSubscribers;
+    subscriberCount.innerHTML = totale;
 
     function showFeedback(message, type) {
         feedback.className = `mt-3 alert alert-${type} py-2 px-3 small`;
@@ -56,37 +69,34 @@
             });
 
             if (response.status === 201 || response.status === 204) {
-          
                 showFeedback(
                     '<i class="bi bi-check-circle-fill me-1"></i>Perfetto! Ti avviseremo non appena l\'app sarà disponibile.',
                     'success'
                 );
+
                 emailInput.value = '';
                 btn.disabled = true;
                 btn.style.opacity = '0.6';
             } else if (response.status === 400) {
-              
                 showFeedback(
                     '<i class="bi bi-info-circle me-1"></i>Sei già in lista! Ti avviseremo presto.',
                     'info'
                 );
-            } else {
+            } else 
                 throw new Error('Errore server: ' + response.status);
-            }
-        } catch (err) {
+        } 
+        catch (err) {
             console.error('Waitlist error:', err);
             showFeedback(
                 '<i class="bi bi-wifi-off me-1"></i>Ops, qualcosa è andato storto. Riprova o scrivici a <a href="mailto:info@lavorami.it">info@lavorami.it</a>.',
                 'danger'
             );
-        } finally {
-            setLoading(false);
-        }
+        } 
+        finally {setLoading(false);}
     });
 
     emailInput.addEventListener('input', function () {
-        if (!feedback.classList.contains('d-none') && feedback.classList.contains('alert-danger')) {
+        if (!feedback.classList.contains('d-none') && feedback.classList.contains('alert-danger'))
             feedback.classList.add('d-none');
-        }
     });
 })();
