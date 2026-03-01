@@ -10,6 +10,11 @@
     --gradient: linear-gradient(135deg, #ff4757 0%, #ff6b81 100%);
 }
 
+::selection {
+    background-color: #e10b0b;
+    color: #fff;
+}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
