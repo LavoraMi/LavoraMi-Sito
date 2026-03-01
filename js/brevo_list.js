@@ -14,15 +14,14 @@
     const btn = document.getElementById('waitlistBtn');
     const subscriberCount = document.getElementById('subscriberCount');
 
-    const brevoRes = await fetch('https://api.brevo.com/v3/contacts/lists', {
+    const brevoRes = await fetch(`https://api.brevo.com/v3/contacts/lists/${BREVO_LIST_ID}`, {
         headers: {
-        'api-key': secret,
-        'Content-Type': 'application/json'
+            'api-key': secret,
+            'Content-Type': 'application/json'
         }
     });
 
-    const data = await brevoRes.json();
-    const lista = data.lists.find(l => l.id === BREVO_LIST_ID);
+    const lista = await brevoRes.json();
     const totale = lista.totalSubscribers;
     subscriberCount.innerHTML = totale;
 
