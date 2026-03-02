@@ -67,6 +67,8 @@
                 }),
             });
 
+            console.log(lista)
+
             if (response.status === 201 || response.status === 204) {
                 showFeedback(
                     '<i class="bi bi-check-circle-fill me-1"></i>Perfetto! Ti avviseremo non appena l\'app sarà disponibile.',
