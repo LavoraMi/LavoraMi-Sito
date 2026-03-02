@@ -69,7 +69,7 @@
 
             console.log(lista)
 
-            if (response.status === 201 || response.status === 204) {
+            if (response.status === 201 || response.status === 200) {
                 showFeedback(
                     '<i class="bi bi-check-circle-fill me-1"></i>Perfetto! Ti avviseremo non appena l\'app sarà disponibile.',
                     'success'
@@ -78,7 +78,7 @@
                 emailInput.value = '';
                 btn.disabled = true;
                 btn.style.opacity = '0.6';
-            } else if (response.status === 400) {
+            } else if (response.status === 400 || response.status === 204) {
                 showFeedback(
                     '<i class="bi bi-info-circle me-1"></i>Sei già in lista! Ti avviseremo presto.',
                     'info'
