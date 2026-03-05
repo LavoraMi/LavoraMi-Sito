@@ -56,11 +56,6 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
         return;
     }
 
-    if (!user) {
-        showError('Sessione utente non valida.');
-        return;
-    }
-
     document.getElementById('successMessage').classList.remove('d-none');
     setTimeout(() => window.location.href = '/', 3000);
 })
