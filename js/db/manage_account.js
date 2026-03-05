@@ -26,7 +26,7 @@ window.addEventListener('load', async () => {
     //*CREARE THE OTP REQUEST
     ///In this section we evaluate the TokenHash from the Request after the '?' params.
     ///If no tokenHash is found, fallback to "no TokenHash" error.
-    const { data, error } = await supabase.auth.getSession()
+    const { data, error } = await supabaseClient.auth.getSession()
 
     console.log('[ℹ️INFO] Data: ', JSON.stringify(data));
     console.log('[ℹ️INFO] Errors: ', JSON.stringify(error));
