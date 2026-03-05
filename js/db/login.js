@@ -31,7 +31,7 @@ window.addEventListener('load', async () => {
 });
 
 //*CLICK ON BUTTON
-document.getElementById("submitBtn", async () => {
+document.getElementById("submitBtn").addEventListener("click", async () => {
     //*CREATE THE CLIENT
     ///Get the SECRETS ENV variables from the cdn correctly
     supabaseClient = window.supabase.createClient(
