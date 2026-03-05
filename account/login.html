@@ -40,18 +40,18 @@
                     <i class="bi bi-exclamation-circle"></i> <span id="errorText"></span>
                 </div>
 
-                <form id="resetPasswordForm" class="text-start">
+                <form id="loginForm" class="text-start">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
-                            <input type="password" class="form-control" id="email" placeholder="esempio@esempio.com" required minlength="8">
+                            <input type="email" class="form-control" id="email" placeholder="esempio@esempio.com" required minlength="8">
                         </div>
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
                         <div class="input-group">
                             <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password" required minlength="8">
-                            <span class="input-group-text" onclick="togglePassword('confirmPassword', 'eyeIcon2')">
+                            <span class="input-group-text" onclick="togglePassword('password', 'eyeIcon2')">
                                 <i class="bi bi-eye-slash" id="eyeIcon2"></i>
                             </span>
                         </div>

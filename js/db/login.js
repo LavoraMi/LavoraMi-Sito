@@ -6,8 +6,7 @@ function showError(message) {
     console.error('[❌ ERROR]:', message);
     document.getElementById('errorText').textContent = message;
     document.getElementById('errorMessage').classList.remove('d-none');
-    document.getElementById('resetPasswordForm').style.display = 'none';
-    document.getElementById('userInfo').classList.add('d-none');
+    document.getElementById('loginForm').style.display = 'none';
 }
 
 //*TOGGLE PASSWORD ICON
@@ -61,4 +60,5 @@ document.getElementById("submitBtn", async () => {
     }
 
     document.getElementById('successMessage').classList.remove('d-none');
+    setTimeout(() => window.location.href = '/', 3000);
 })
