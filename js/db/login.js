@@ -1,0 +1,64 @@
+let supabaseClient;
+
+//*SHOW ERROR TEXT
+///This method is a refactor function, used for every case when an error occurs.
+function showError(message) {
+    console.error('[❌ ERROR]:', message);
+    document.getElementById('errorText').textContent = message;
+    document.getElementById('errorMessage').classList.remove('d-none');
+    document.getElementById('resetPasswordForm').style.display = 'none';
+    document.getElementById('userInfo').classList.add('d-none');
+}
+
+//*TOGGLE PASSWORD ICON
+///This method change the icon of Password Inputs and InputField type Text
+function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon  = document.getElementById(iconId);
+    const isPwd = input.type === 'password';
+
+    if (!input || !icon) return;
+
+    input.type = isPwd ? 'text' : 'password';
+    icon.classList.toggle('bi-eye-slash', !isPwd);
+    icon.classList.toggle('bi-eye', isPwd);
+}
+
+//*ON LOAD EVENT
+window.addEventListener('load', async () => {
+    //Preloader stuffs
+    const preloader = document.getElementById('preloader');
+    if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
+});
+
+//*CLICK ON BUTTON
+document.getElementById("submitBtn", async () => {
+    //*CREATE THE CLIENT
+    ///Get the SECRETS ENV variables from the cdn correctly
+    supabaseClient = window.supabase.createClient(
+        window.ENV.SUPABASE_URL,
+        window.ENV.SUPABASE_ANON_KEY
+    );
+
+    //*GET THE USER VALUES
+    ///In this section of the code, we grab the email and the password d.id elements.
+    const emailValue = document.getElementById("email").value;
+    const passwordValue = document.getElementById("password").value;
+
+    const { user, session, error } = await supabaseClient.auth.signIn({
+        email: emailValue,
+        password: passwordValue,
+    })
+
+    if (error) {
+        showError('Si è verificato un errore imprevisto: ' + error.message);
+        return;
+    }
+
+    if (!user) {
+        showError('Sessione utente non valida.');
+        return;
+    }
+
+    document.getElementById('successMessage').classList.remove('d-none');
+})
