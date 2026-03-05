@@ -33,7 +33,7 @@ window.addEventListener('load', async () => {
 //*CLICK ON BUTTON
 document.getElementById("submitBtn").addEventListener("click", async (event) => {
     event.preventDefault()
-    
+
     //*CREATE THE CLIENT
     ///Get the SECRETS ENV variables from the cdn correctly
     supabaseClient = window.supabase.createClient(
@@ -46,7 +46,7 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     const emailValue = document.getElementById("email").value;
     const passwordValue = document.getElementById("password").value;
 
-    const { user, session, error } = await supabaseClient.auth.signIn({
+    const { user, session, error } = await supabaseClient.auth.signInWithPassword({
         email: emailValue,
         password: passwordValue,
     })
