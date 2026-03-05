@@ -10,79 +10,11 @@ function showError(message) {
     document.getElementById('userInfo').classList.add('d-none');
 }
 
-//*TOGGLE PASSWORD ICON
-///This method change the icon of Password Inputs and InputField type Text
-function togglePassword(inputId, iconId) {
-    const input = document.getElementById(inputId);
-    const icon  = document.getElementById(iconId);
-    const isPwd = input.type === 'password';
-
-    if (!input || !icon) return;
-
-    input.type = isPwd ? 'text' : 'password';
-    icon.classList.toggle('bi-eye-slash', !isPwd);
-    icon.classList.toggle('bi-eye', isPwd);
-}
-
-//*VALIDATE THE PASSWORD
-///In this method we check if the Confirm New Password and New Password input are not different
-function validatePasswords() {
-    const passwordNew = document.getElementById('newPassword').value;
-    const confirmation = document.getElementById('confirmPassword').value;
-    const err = document.getElementById('passwordError');
-    const match = passwordNew === confirmation;
-
-    err.classList.toggle('d-none', match);
-    return match;
-}
-
-//*RESET THE PASSWORD
-///This ASYNC function calls the SupabaseAPIs for change the password of the current user session
-async function resetPassword(newPassword) {
-    const btn = document.getElementById('submitBtn');
-
-    btn.disabled = true;
-    btn.textContent = 'Caricamento...';
-
-    const { error } = await supabaseClient.auth.updateUser({ password: newPassword });
-
-    if (error) {
-        showError(error.message);
-        btn.disabled = false;
-        btn.textContent = 'Aggiorna Password';
-        return;
-    }
-
-    document.getElementById('resetPasswordForm').style.display = 'none';
-    document.getElementById('successMessage').classList.remove('d-none');
-    setTimeout(() => window.location.href = '/', 3000);
-}
-
-//*RESET PASSWORD FORM LISTENER
-document.getElementById('resetPasswordForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    if (validatePasswords()) 
-        resetPassword(document.getElementById('newPassword').value);
-});
-
 //*ON LOAD EVENT
 window.addEventListener('load', async () => {
     //Preloader stuffs
     const preloader = document.getElementById('preloader');
     if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
-
-    const params = new URLSearchParams(window.location.search);
-    const tokenHash = params.get('token_hash');
-    const type = params.get('type');
-
-    console.log('[ℹ️INFO] Token: ', tokenHash);
-    console.log('[ℹ️INFO] Type: ', type);
-
-    if (!tokenHash) {
-        showError('Link non valido. Usa il link ricevuto via email.');
-        return;
-    }
 
     //*CREATE THE CLIENT
     ///Get the SECRETS ENV variables from the cdn correctly
