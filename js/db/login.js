@@ -57,5 +57,6 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     }
 
     document.getElementById('successMessage').classList.remove('d-none');
-    setTimeout(() => window.location.href = '/', 3000);
+    document.getElementById('loginForm').style.display = 'none';
+    setTimeout(() => window.location.href = 'manage.html', 3000);
 })
