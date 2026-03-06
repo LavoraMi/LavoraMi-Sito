@@ -43,7 +43,9 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
 
     //*GET THE USER SESSION
     ///In this section of the code, we will check the session if exist or not
-    const {data: {userSession}} = await supabaseClient.auth.getSession(); 
+    const {data: {userSession}} = await supabaseClient.auth.getSession();
+    console.log("[ℹ️INFO] User Session: " + userSession)
+
     if(userSession) window.location.href = "/account/manage"
 
     //*GET THE USER VALUES
