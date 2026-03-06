@@ -44,7 +44,7 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     //*GET THE USER SESSION
     ///In this section of the code, we will check the session if exist or not
     const {data: {userSession}} = await supabaseClient.auth.getSession(); 
-    if(userSession) window.location.href = "/manage"
+    if(userSession) window.location.href = "/account/manage"
 
     //*GET THE USER VALUES
     ///In this section of the code, we grab the email and the password d.id elements.
@@ -63,5 +63,5 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
 
     document.getElementById('successMessage').classList.remove('d-none');
     document.getElementById('loginForm').style.display = 'none';
-    setTimeout(() => window.location.href = '/manage', 2000);
+    setTimeout(() => window.location.href = '/account/manage', 2000);
 })
