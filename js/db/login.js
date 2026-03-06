@@ -28,6 +28,13 @@ window.addEventListener('load', async () => {
     const preloader = document.getElementById('preloader');
     if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
 
+    //*CREATE THE CLIENT
+    ///Get the SECRETS ENV variables from the cdn correctly
+    supabaseClient = window.supabase.createClient(
+        window.ENV.SUPABASE_URL,
+        window.ENV.SUPABASE_ANON_KEY
+    );
+
     //*GET THE USER SESSION
     ///In this section of the code, we will check the session if exist or not
     const {data: {userSession}} = await supabaseClient.auth.getSession();
@@ -39,13 +46,6 @@ window.addEventListener('load', async () => {
 //*CLICK ON BUTTON
 document.getElementById("submitBtn").addEventListener("click", async (event) => {
     event.preventDefault()
-
-    //*CREATE THE CLIENT
-    ///Get the SECRETS ENV variables from the cdn correctly
-    supabaseClient = window.supabase.createClient(
-        window.ENV.SUPABASE_URL,
-        window.ENV.SUPABASE_ANON_KEY
-    );
 
     //*GET THE USER VALUES
     ///In this section of the code, we grab the email and the password d.id elements.
