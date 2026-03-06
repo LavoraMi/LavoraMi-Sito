@@ -35,12 +35,14 @@ window.addEventListener('load', async () => {
     }
 
     //*GET THE USER SESSION FROM DATA VALUES
-    const user = data?.user;
+    const session = data?.session;
 
-    if (!user) {
+    if (!session) {
         showError('Sessione utente non valida.');
         return;
     }
+
+    const user = session?.user;
 
     console.log('[ℹ️INFO] User: ', user.email);
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
