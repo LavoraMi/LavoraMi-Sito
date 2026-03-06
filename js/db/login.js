@@ -37,8 +37,8 @@ window.addEventListener('load', async () => {
 
     //*GET THE USER SESSION
     ///In this section of the code, we will check the session if exist or not
-    const {data: {userSession}} = await supabaseClient.auth.getSession();
-    console.log("[ℹ️INFO] User Session: " + userSession)
+    const { data, error } = await supabaseClient.auth.getSession()
+    const userSession = data?.session;
 
     if(userSession) window.location.href = "/account/manage"
 });
