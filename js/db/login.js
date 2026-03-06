@@ -4,9 +4,8 @@ let supabaseClient;
 ///This method is a refactor function, used for every case when an error occurs.
 function showError(message) {
     console.error('[❌ ERROR]:', message);
-    document.getElementById('errorText').textContent = message;
-    document.getElementById('errorMessage').classList.remove('d-none');
-    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('passwordError').textContent = message;
+    document.getElementById('passwordError').classList.remove('d-none');
 }
 
 //*TOGGLE PASSWORD ICON
@@ -25,9 +24,16 @@ function togglePassword(inputId, iconId) {
 
 //*ON LOAD EVENT
 window.addEventListener('load', async () => {
-    //Preloader stuffs
+    //*PRELOADER STUFFS
     const preloader = document.getElementById('preloader');
     if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
+
+    //*GET THE USER SESSION
+    ///In this section of the code, we will check the session if exist or not
+    const {data: {userSession}} = await supabaseClient.auth.getSession();
+    console.log("[ℹ️INFO] User Session: " + userSession)
+
+    if(userSession) window.location.href = "/account/manage"
 });
 
 //*CLICK ON BUTTON
@@ -40,13 +46,6 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
         window.ENV.SUPABASE_URL,
         window.ENV.SUPABASE_ANON_KEY
     );
-
-    //*GET THE USER SESSION
-    ///In this section of the code, we will check the session if exist or not
-    const {data: {userSession}} = await supabaseClient.auth.getSession();
-    console.log("[ℹ️INFO] User Session: " + userSession)
-
-    if(userSession) window.location.href = "/account/manage"
 
     //*GET THE USER VALUES
     ///In this section of the code, we grab the email and the password d.id elements.
