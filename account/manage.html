@@ -103,7 +103,6 @@
                 word-break: break-all;
             }
 
-            /* Stile per i bottoni azzurri dell'app */
             .btn-blue {
                 background: var(--btn-blue);
                 color: white;
@@ -128,7 +127,6 @@
                 font-size: 1.2rem;
             }
 
-            /* Stile bottone esci rosso */
             .btn-accent {
                 background: linear-gradient(135deg, #ff0015 0%, #ff4757 100%);
                 color: white;
@@ -159,6 +157,71 @@
             }
             
             .loader-hidden { opacity: 0; visibility: hidden; }
+
+            .lm-modal-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.75);
+                backdrop-filter: blur(6px);
+                z-index: 8000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.25s ease;
+            }
+            .lm-modal-overlay.open { opacity: 1; pointer-events: all; }
+
+            .lm-modal {
+                background: var(--bg-card);
+                border: 1px solid var(--border-color);
+                border-radius: 20px;
+                padding: 36px 32px 28px;
+                width: 100%;
+                max-width: 400px;
+                box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+                transform: translateY(20px) scale(0.97);
+                transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
+                text-align: center;
+            }
+            .lm-modal-overlay.open .lm-modal { transform: translateY(0) scale(1); }
+
+            .lm-modal-icon {
+                width: 64px; height: 64px;
+                border-radius: 50%;
+                display: flex; align-items: center; justify-content: center;
+                margin: 0 auto 20px;
+                font-size: 1.8rem;
+            }
+            .lm-modal-icon.danger  { background: rgba(255,0,21,0.12); border: 1.5px solid rgba(255,0,21,0.3); color: var(--accent); }
+            .lm-modal-icon.warning { background: rgba(255,168,0,0.12); border: 1.5px solid rgba(255,168,0,0.3); color: #ffa800; }
+
+            .lm-modal h3 { font-weight: 800; font-size: 1.3rem; margin-bottom: 10px; }
+            .lm-modal p  { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 28px; }
+            .lm-modal p strong { color: var(--text-main); }
+
+            .lm-modal-divider { border: none; border-top: 1px solid var(--border-color); margin: 0 -32px 24px; }
+
+            .lm-modal-actions { display: flex; gap: 12px; }
+
+            .lm-btn {
+                flex: 1; padding: 13px; border-radius: 12px;
+                font-weight: 600; font-size: 0.95rem;
+                border: none; cursor: pointer;
+                transition: transform 0.18s, box-shadow 0.18s;
+            }
+            .lm-btn:hover { transform: translateY(-2px); }
+
+            .lm-btn-ghost  { background: var(--input-bg); color: var(--text-muted); border: 1px solid var(--border-color); }
+            .lm-btn-ghost:hover { background: #2a2a2a; color: var(--text-main); }
+
+            .lm-btn-danger  { background: linear-gradient(135deg,#ff0015,#ff4757); color: white; }
+            .lm-btn-danger:hover { box-shadow: 0 6px 20px rgba(255,0,21,0.4); }
+
+            .lm-btn-warning { background: linear-gradient(135deg,#ffa800,#ffcc00); color: #1a1000; }
+            .lm-btn-warning:hover { box-shadow: 0 6px 20px rgba(255,168,0,0.35); }
         </style>
     </head>
     <body>
@@ -178,24 +241,19 @@
 
         <div class="auth-wrapper">
             <div class="auth-card text-start">
-                
                 <div class="text-center mb-4">
-                    <h2>👋 Ciao <span id="displayFirstName">Andrea</span></h2>
+                    <h2>👋 Ciao <span id="displayFirstName"></span></h2>
                     <p class="subtitle">Qua puoi gestire il tuo account e le tue informazioni.</p>
                 </div>
-
                 <div id="errorMessage" class="alert alert-danger alert-message d-none" role="alert">
                     <i class="bi bi-exclamation-circle"></i> <span id="errorText"></span>
                 </div>
-
                 <div class="mb-5">
                     <div class="section-title">Informazioni</div>
-                    
                     <div class="info-row">
                         <i class="bi bi-person-fill"></i>
                         <span id="userFullName"></span>
                     </div>
-
                     <div class="info-row">
                         <i class="bi bi-envelope-fill"></i>
                         <span id="userEmail"></span>
@@ -204,15 +262,12 @@
 
                 <div class="mb-4">
                     <div class="section-title">Gestisci</div>
-                    
-                    <button class="btn btn-blue w-100 mb-3" onclick="window.location.href='/account/reset-password'">
+                    <button class="btn btn-blue w-100 mb-3" id="editPassword">
                         <i class="bi bi-lock-fill me-2"></i> Modifica Password
                     </button>
-
                     <button class="btn btn-blue w-100 mb-3" id="deleteAccountBtn">
                         <i class="bi bi-trash3-fill me-2"></i> Elimina Account
                     </button>
-
                     <button class="btn btn-blue w-100 mb-4" id="requestDataBtn">
                         <i class="bi bi-person-vcard-fill me-2"></i> Richiedi i tuoi dati
                     </button>
@@ -221,19 +276,33 @@
                 <button class="btn btn-accent w-100 mt-2" id="logoutBtn">
                     <i class="bi bi-box-arrow-right me-2"></i> Esci
                 </button>
-
+                <div class="lm-modal-overlay" id="modalLogoutOverlay">
+                    <div class="lm-modal">
+                        <div class="lm-modal-icon danger"><i class="bi bi-box-arrow-right" id="modal_icon"></i></div>
+                        <h3 id="modal_title">Esci dall'account</h3>
+                        <hr class="lm-modal-divider">
+                        <p id="modal_deps">Sei sicuro di voler uscire? Dovrai accedere di nuovo con le tue credenziali.</p>
+                        <div class="lm-modal-actions">
+                            <button class="lm-btn lm-btn-ghost" id="modalLogoutCancel">Annulla</button>
+                            <button class="lm-btn lm-btn-danger" id="modalLogoutConfirm">Continua</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lm-modal-overlay" id="modalOneButtonOverlay">
+                    <div class="lm-modal">
+                        <div class="lm-modal-icon warning"><i class="bi bi-info-circle-fill"></i></div>
+                        <h3 id="modal_title_one"></h3>
+                        <hr class="lm-modal-divider">
+                        <p id="modal_deps_one"></p>
+                        <div class="lm-modal-actions">
+                            <button class="lm-btn lm-btn-warning" id="modalClose">Chiudi</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.98.0"></script>
         <script src="/config.js"></script><script src="../js/db/manage_account.js"></script>
-        <script>
-            window.addEventListener('load', () => {
-                const preloader = document.getElementById('preloader');
-                if (preloader) {
-                    setTimeout(() => { preloader.classList.add('loader-hidden'); }, 300);
-                }
-            });
-        </script>
     </body>
 </html>

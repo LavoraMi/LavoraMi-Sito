@@ -48,3 +48,31 @@ window.addEventListener('load', async () => {
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
 });
+
+function openModal(overlayId, msg, title, iconName) {
+    document.getElementById(overlayId).classList.add('open');
+    document.getElementById("modal_deps").innerHTML = msg;
+    document.getElementById("modal_deps_one").innerHTML = msg;
+    document.getElementById("modal_title").innerHTML = title;
+    document.getElementById("modal_title_one").innerHTML = title;
+    document.getElementById("modal_icon").className = iconName;
+}
+
+function closeModal(overlayId) {document.getElementById(overlayId).classList.remove('open');}
+
+document.getElementById("editPassword").addEventListener("click", async () => {openModal("modalLogoutOverlay", "Ti invieremo una mail per modificare la tua password, vuoi continuare?", "Modifica Password", "bi bi-envelope-open-fill")})
+
+//*OPEN MODAL METHODS
+///In this section, we call the addEventListener event to open the Modal.
+document.getElementById("deleteAccountBtn").addEventListener("click", () => openModal('modalLogoutOverlay', "Sei sicuro di voler eliminare il tuo account di LavoraMi?", "Elimina Account", "bi bi-trash-fill"));
+document.getElementById("logoutBtn").addEventListener("click", () => openModal('modalLogoutOverlay', "Sei sicuro di voler uscire dal tuo account?", "Esci", "bi bi-box-arrow-right"));
+document.getElementById("requestDataBtn").addEventListener("click", () => openModal('modalOneButtonOverlay', "Per richiedere il Download dei dati personali, apri l'app di LavoraMi e vai nella sezione: <b>Account</b> > <b>Richiedi i tuoi dati</b>.", "Attenzione", "bi bi-box-arrow-right"));
+
+document.getElementById('modalLogoutCancel').addEventListener('click', () => closeModal('modalLogoutOverlay'));
+document.getElementById('modalLogoutConfirm').addEventListener('click', () => {
+    closeModal('modalLogoutOverlay');
+});
+
+document.getElementById('modalClose').addEventListener('click', () => {
+    closeModal('modalOneButtonOverlay');
+});
