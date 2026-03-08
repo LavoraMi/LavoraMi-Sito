@@ -84,7 +84,7 @@ document.getElementById('modalLogoutConfirm').addEventListener('click', async ()
 });
 
 async function signOut(){
-    const { error } = await supabase.auth.signOut()
+    const { error } = await supabaseClient.auth.signOut()
 
     if(error) {
         showError('Si è verificato un errore imprevisto: ' + error.message);
@@ -97,7 +97,7 @@ async function signOut(){
 async function requestPassword(){
     const email = document.getElementById("userEmail").value;
 
-    const { data, error } = await supabase.auth.resetPasswordForEmail(email)
+    const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email)
 }
 
 document.getElementById('modalClose').addEventListener('click', () => {
