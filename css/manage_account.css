@@ -209,4 +209,4 @@ body {
 .lm-btn-warning:hover { box-shadow: 0 6px 20px rgba(255,168,0,0.35); }
 
 .lm-btn-success { background: linear-gradient(135deg,#166007,#00ff1a); color: #001a13; }
-.lm-btn-success:hover { box-shadow: 0 6px 20px rgba(255,168,0,0.35); }
+.lm-btn-success:hover { box-shadow: 0 6px 20px rgba(2, 84, 20, 0.35); }
