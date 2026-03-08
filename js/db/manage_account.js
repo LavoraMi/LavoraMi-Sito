@@ -32,6 +32,10 @@ window.addEventListener('load', async () => {
         showError('Si è verificato un errore imprevisto: ' + error.message);
         return;
     }
+    else if (data == null){
+        showError('Si è verificato un errore imprevisto: ' + error.message);
+        return;
+    }
 
     //*GET THE USER SESSION FROM DATA VALUES
     const session = data?.session;
@@ -45,6 +49,7 @@ window.addEventListener('load', async () => {
 
     console.log('[ℹ️INFO] User: ', user.email);
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
+    console.log("[ℹ️INFO] UserName: " + displayName)
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
 });
@@ -69,9 +74,31 @@ document.getElementById("logoutBtn").addEventListener("click", () => openModal('
 document.getElementById("requestDataBtn").addEventListener("click", () => openModal('modalOneButtonOverlay', "Per richiedere il Download dei dati personali, apri l'app di LavoraMi e vai nella sezione: <b>Account</b> > <b>Richiedi i tuoi dati</b>.", "Attenzione", "bi bi-box-arrow-right"));
 
 document.getElementById('modalLogoutCancel').addEventListener('click', () => closeModal('modalLogoutOverlay'));
-document.getElementById('modalLogoutConfirm').addEventListener('click', () => {
+document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
     closeModal('modalLogoutOverlay');
+
+    if(document.getElementById("modal_title").innerHTML == "Elimina Account")
+        signOut();
+    else
+        requestPassword();
 });
+
+async function signOut(){
+    const { error } = await supabase.auth.signOut()
+
+    if(error) {
+        showError('Si è verificato un errore imprevisto: ' + error.message);
+        return;
+    }
+
+    window.location.href = "/account/login"
+}
+
+async function requestPassword(){
+    const email = document.getElementById("userEmail").value;
+
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email)
+}
 
 document.getElementById('modalClose').addEventListener('click', () => {
     closeModal('modalOneButtonOverlay');
