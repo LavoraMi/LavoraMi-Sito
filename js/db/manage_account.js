@@ -1,4 +1,5 @@
 let supabaseClient;
+let user;
 
 //*SHOW ERROR TEXT
 ///This method is a refactor function, used for every case when an error occurs.
@@ -45,13 +46,14 @@ window.addEventListener('load', async () => {
         return;
     }
 
-    const user = session?.user;
+    user = session?.user;
 
     console.log('[ℹ️INFO] User: ', user.email);
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
     console.log("[ℹ️INFO] UserName: " + displayName)
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
+    document.getElementById("displayFirstName").innerHTML = displayName;
 });
 
 function openModal(overlayId, msg, title, iconName) {
@@ -77,8 +79,10 @@ document.getElementById('modalLogoutCancel').addEventListener('click', () => clo
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
     closeModal('modalLogoutOverlay');
 
-    if(document.getElementById("modal_title").innerHTML == "Elimina Account")
+    if(document.getElementById("modal_title").innerHTML == "Esci")
         signOut();
+    else if(document.getElementById("modal_title").innerHTML == "Elimina Account")
+        deleteAccount();
     else
         requestPassword();
 });
@@ -98,8 +102,20 @@ async function requestPassword(){
     const email = document.getElementById("userEmail").innerHTML;
 
     const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email)
+
+    if(error) {
+        showError('Si è verificato un errore imprevisto: ' + error.message);
+        return;
+    }
 }
 
-document.getElementById('modalClose').addEventListener('click', () => {
-    closeModal('modalOneButtonOverlay');
-});
+async function deleteAccount(){
+    const { data, error } = await supabaseClient.auth.admin.deleteUser(user.id)
+
+    if(error) {
+        showError('Si è verificato un errore imprevisto: ' + error.message);
+        return;
+    }
+}
+
+document.getElementById('modalClose').addEventListener('click', () => {closeModal('modalOneButtonOverlay');});
