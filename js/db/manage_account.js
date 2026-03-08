@@ -128,6 +128,9 @@ async function deleteAccount(){
         showError('Si è verificato un errore imprevisto: ' + error.message);
         return;
     }
+
+    //*REDIRECT TO LOGIN PAGE
+    window.location.href = "/account/login"
 }
 
 document.getElementById('modalClose').addEventListener('click', () => {closeModal('modalOneButtonOverlay');});
