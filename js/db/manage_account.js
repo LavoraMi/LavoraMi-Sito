@@ -1,4 +1,4 @@
-let supabaseClient;
+let supabaseClient, supabaseAdmin;
 let user;
 
 //*SHOW ERROR TEXT
@@ -26,9 +26,13 @@ window.addEventListener('load', async () => {
 
     supabaseClient = window.supabase.createClient(
         window.ENV.SUPABASE_URL,
-        window.ENV.SUPABASE_ANON_KEY,
-        SUPABASE_SERVICE_ROLE_KEY
+        window.ENV.SUPABASE_ANON_KEY
     );
+
+    supabaseAdmin = window.supabase.createClient(
+        window.ENV.SUPABASE_URL,
+        SUPABASE_SERVICE_ROLE_KEY
+    )
 
     //*CREARE THE OTP REQUEST
     ///In this section we evaluate the TokenHash from the Request after the '?' params.
@@ -118,7 +122,7 @@ async function requestPassword(){
 }
 
 async function deleteAccount(){
-    const { data, error } = await supabaseClient.auth.admin.deleteUser(user.id)
+    const { data, error } = await supabaseAdmin.auth.admin.deleteUser(user.id)
 
     if(error) {
         showError('Si è verificato un errore imprevisto: ' + error.message);
