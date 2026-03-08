@@ -7,8 +7,8 @@ function showError(message) {
     document.getElementById('passwordError').textContent = message;
     document.getElementById('passwordError').classList.remove('d-none');
     setTimeout(() => {
-        document.getElementById('passwordError').textContent = message;
-        document.getElementById('passwordError').classList.remove('d-none');
+        document.getElementById('passwordError').textContent = "";
+        document.getElementById('passwordError').classList.add('d-none');
     }, 5000);
 }
 
@@ -45,3 +45,5 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     document.getElementById('loginForm').style.display = 'none';
     setTimeout(() => window.location.href = '/account/login', 2000);
 })
+
+document.getElementById("backToLogin").addEventListener("click", () => {window.location.href = "/account/login";})

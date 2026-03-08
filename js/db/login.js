@@ -7,8 +7,8 @@ function showError(message) {
     document.getElementById('passwordError').textContent = message;
     document.getElementById('passwordError').classList.remove('d-none');
     setTimeout(() => {
-        document.getElementById('passwordError').textContent = message;
-        document.getElementById('passwordError').classList.remove('d-none');
+        document.getElementById('passwordError').textContent = "";
+        document.getElementById('passwordError').classList.add('d-none');
     }, 5000);
 }
 
