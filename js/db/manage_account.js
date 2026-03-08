@@ -72,9 +72,12 @@ function openModal(overlayId, msg, title, iconName) {
     document.getElementById(overlayId).classList.add('open');
     document.getElementById("modal_deps").innerHTML = msg;
     document.getElementById("modal_deps_one").innerHTML = msg;
+    document.getElementById("modal_deps_success").innerHTML = msg;
     document.getElementById("modal_title").innerHTML = title;
     document.getElementById("modal_title_one").innerHTML = title;
+    document.getElementById("modal_title_success").innerHTML = title;
     document.getElementById("modal_icon").className = iconName;
+    document.getElementById("modal_icon_success").className = iconName;
 }
 
 function closeModal(overlayId) {document.getElementById(overlayId).classList.remove('open');}
@@ -88,6 +91,7 @@ document.getElementById("logoutBtn").addEventListener("click", () => openModal('
 document.getElementById("requestDataBtn").addEventListener("click", () => openModal('modalOneButtonOverlay', "Per richiedere il Download dei dati personali, apri l'app di LavoraMi e vai nella sezione: <b>Account</b> > <b>Richiedi i tuoi dati</b>.", "Attenzione", "bi bi-box-arrow-right"));
 
 document.getElementById('modalLogoutCancel').addEventListener('click', () => closeModal('modalLogoutOverlay'));
+document.getElementById('modalSuccessClose').addEventListener('click', () => closeModal('modalSuccess'));
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
     closeModal('modalLogoutOverlay');
 
@@ -119,6 +123,8 @@ async function requestPassword(){
         showError('Si è verificato un errore imprevisto: ' + error.message);
         return;
     }
+
+    openModal('modalSuccess', "Controlla la tua casella di posta! Ti abbiamo inviato l'Email che hai richiesto.", "Email inviata", "bi bi-envelope-check-fill")
 }
 
 async function deleteAccount(){

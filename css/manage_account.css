@@ -181,6 +181,7 @@ body {
 }
 .lm-modal-icon.danger  { background: rgba(255,0,21,0.12); border: 1.5px solid rgba(255,0,21,0.3); color: var(--accent); }
 .lm-modal-icon.warning { background: rgba(255,168,0,0.12); border: 1.5px solid rgba(255,168,0,0.3); color: #ffa800; }
+.lm-modal-icon.success { background:rgba(0, 255, 21, 0.12); border: 1.5px solid rgba(0, 255, 21, 0.12); color: #087c2b; }
 
 .lm-modal h3 { font-weight: 800; font-size: 1.3rem; margin-bottom: 10px; }
 .lm-modal p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 28px; }
@@ -206,3 +207,6 @@ body {
 
 .lm-btn-warning { background: linear-gradient(135deg,#ffa800,#ffcc00); color: #1a1000; }
 .lm-btn-warning:hover { box-shadow: 0 6px 20px rgba(255,168,0,0.35); }
+
+.lm-btn-success { background: linear-gradient(135deg,#166007,#00ff1a); color: #001a13; }
+.lm-btn-success:hover { box-shadow: 0 6px 20px rgba(255,168,0,0.35); }
