@@ -66,3 +66,17 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     document.getElementById('loginForm').style.display = 'none';
     setTimeout(() => window.location.href = '/account/manage', 2000);
 })
+
+document.getElementById("googleLogin").addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+            redirectTo: window.location.origin + '/account/manage'
+        }
+    });
+
+    if (error)
+        showError('Errore login con Google: ' + error.message);
+});
