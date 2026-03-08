@@ -50,3 +50,5 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'dark');
     }
 });
+
+document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"})
