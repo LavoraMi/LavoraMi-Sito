@@ -7,6 +7,10 @@ function showError(message) {
     console.error('[❌ ERROR]:', message);
     document.getElementById('errorText').textContent = message;
     document.getElementById('errorMessage').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('errorText').textContent = "";
+        document.getElementById('errorMessage').classList.add('d-none');
+    }, 5000);
 }
 
 //*ON LOAD EVENT
@@ -16,10 +20,14 @@ window.addEventListener('load', async () => {
     if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
 
     //*CREATE THE CLIENT
-    ///Get the SECRETS ENV variables from the cdn correctly
+    ///Get the SECRETS ENV variables from the Netlify Functions correctly
+    const res = await fetch('/.netlify/functions/get-secret');
+    const { SUPABASE_SERVICE_ROLE_KEY } = await res.json();
+
     supabaseClient = window.supabase.createClient(
         window.ENV.SUPABASE_URL,
-        window.ENV.SUPABASE_ANON_KEY
+        window.ENV.SUPABASE_ANON_KEY,
+        SUPABASE_SERVICE_ROLE_KEY
     );
 
     //*CREARE THE OTP REQUEST

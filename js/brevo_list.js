@@ -1,9 +1,9 @@
 (async function () {
    
     const res = await fetch('/.netlify/functions/get-secret');
-    const { secret } = await res.json();
+    const { BrevoAPIKEY } = await res.json();
 
-    const BREVO_API_KEY = secret;
+    const BREVO_API_KEY = BrevoAPIKEY;
     const BREVO_LIST_ID = 6; 
 
     const form = document.getElementById('waitlistForm');
@@ -16,7 +16,7 @@
 
     const brevoRes = await fetch(`https://api.brevo.com/v3/contacts/lists/${BREVO_LIST_ID}`, {
         headers: {
-            'api-key': secret,
+            'api-key': BrevoAPIKEY,
             'Content-Type': 'application/json'
         }
     });
