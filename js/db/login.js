@@ -6,6 +6,10 @@ function showError(message) {
     console.error('[❌ ERROR]:', message);
     document.getElementById('passwordError').textContent = message;
     document.getElementById('passwordError').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('passwordError').textContent = message;
+        document.getElementById('passwordError').classList.remove('d-none');
+    }, 5000);
 }
 
 //*TOGGLE PASSWORD ICON
@@ -80,3 +84,8 @@ document.getElementById("googleLogin").addEventListener("click", async (event) =
     if (error)
         showError('Errore login con Google: ' + error.message);
 });
+
+//*OTHER ACTIONS
+///In this section of the code, we can navigate to the Account folder for Reset the Password and create a new Account
+
+document.getElementById("passwordRecovery").addEventListener("click", () => {window.location.href = "/account/request-reset-password";})
