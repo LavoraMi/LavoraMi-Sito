@@ -95,7 +95,7 @@ async function signOut(){
 }
 
 async function requestPassword(){
-    const email = document.getElementById("userEmail").value;
+    const email = document.getElementById("userEmail").innerHTML;
 
     const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email)
 }
