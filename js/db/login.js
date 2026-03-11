@@ -77,7 +77,7 @@ document.getElementById("googleLogin").addEventListener("click", async (event) =
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: window.location.origin + '/account/manage'
+            redirectTo: window.location.origin + '/account/manage?provider=google'
         }
     });
 
