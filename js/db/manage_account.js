@@ -19,18 +19,6 @@ window.addEventListener('load', async () => {
     const preloader = document.getElementById('preloader');
     if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
 
-    //*GET THE PROVIDER TYPE
-    ///In this section of the code, we get if the account is logged-in by Google or Email and Password.
-
-    try{
-        const params = URLSearchParams(window.location.search);
-        const providerType = params.get('provider');
-        document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
-    }
-    catch(error){
-        console.log("[ℹ️INFO]: " + error)
-    }
-
     //*CREATE THE CLIENT
     ///Get the SECRETS ENV variables from the Netlify Functions correctly
     const res = await fetch('/.netlify/functions/get-secret');
@@ -71,6 +59,17 @@ window.addEventListener('load', async () => {
     }
 
     user = session?.user;
+
+    //*GET THE PROVIDER TYPE
+    ///In this section of the code, we get if the account is logged-in by Google or Email and Password.
+    try{
+        const params = URLSearchParams(window.location.search);
+        const providerType = params.get('provider');
+        document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
+    }
+    catch(error){
+        console.log("[ℹ️INFO]: " + error)
+    }
 
     console.log('[ℹ️INFO] User: ', user.email);
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
