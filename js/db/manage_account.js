@@ -22,9 +22,14 @@ window.addEventListener('load', async () => {
     //*GET THE PROVIDER TYPE
     ///In this section of the code, we get if the account is logged-in by Google or Email and Password.
 
-    const params = URLSearchParams(window.location.search);
-    const providerType = params.get('provider');
-    document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
+    try{
+        const params = URLSearchParams(window.location.search);
+        const providerType = params.get('provider');
+        document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
+    }
+    catch(error){
+        console.log("[ℹ️INFO]: " + error)
+    }
 
     //*CREATE THE CLIENT
     ///Get the SECRETS ENV variables from the Netlify Functions correctly
