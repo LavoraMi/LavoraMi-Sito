@@ -66,6 +66,7 @@ window.addEventListener('load', async () => {
         const params = new URLSearchParams(window.location.search);
         const providerType = params.get('provider');
         document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
+        document.getElementById('loggedInWithGoogle').style.display = (providerType === "google") ? "display" : "none";
     }
     catch(error){
         console.log("[ℹ️INFO]: " + error)
