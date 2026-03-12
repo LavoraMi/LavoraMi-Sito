@@ -16,7 +16,6 @@ const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
 
 ///In this section, we check the favorite Theme settings by the User Settings.
-//?REFACTOR: Refactor this function to be only one function and be more clean.
 if(localStorage.getItem("theme") == null){
     const darkModeMql = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
     if (darkModeMql && darkModeMql.matches) {
@@ -30,7 +29,6 @@ if(localStorage.getItem("theme") == null){
 }
 
 ///We use the localStorage to save the Theme selected from the user, after that, we edit the theme based from this value.
-//?REFACTOR: Refactor this function to be only one function and be more clean.
 if (localStorage.getItem('theme') === 'light') {
     body.classList.add('light-mode');
     themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
@@ -38,7 +36,6 @@ if (localStorage.getItem('theme') === 'light') {
 
 ///Here is where we change effectly the theme. 
 ///This Arrow Function is for add a Listener to our ThemeSwitcherButton into the HTML Page.
-//?REFACTOR: Refactor this function to be only one function and be more clean.
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('light-mode');
     

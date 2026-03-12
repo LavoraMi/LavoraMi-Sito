@@ -7,8 +7,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-        <link rel="icon" href="img/icon.png">
+        <link rel="icon" href="img/icon.webp">
         <link rel="stylesheet" href="css/privacypolicy.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -23,11 +24,17 @@
                 </div>
             </div>
         </nav>
+        <div id="preloader">
+            <div class="loader-content">
+                <img src="img/icon.webp" alt="LavoraMI Logo" class="pulse-logo">
+                <div class="loader-line"></div>
+            </div>
+        </div>
         <div class="container">
             <div class="policy-container">
                 <div class="text-center">
                     <h1>Privacy Policy di LavoraMi</h1>
-                    <p class="small text-white text-uppercase letter-spacing-2">Ultimo aggiornamento: 17 Febbraio 2026.</p>
+                    <p class="small text-white text-uppercase letter-spacing-2">Ultimo aggiornamento: 12 Marzo 2026.</p>
                 </div>
                 <hr class="border-secondary my-5 opacity-25">
                 <p>Questa Informativa sulla Privacy descrive le modalità di raccolta, utilizzo e protezione dei dati personali degli utenti (di seguito "Utenti" o "Interessati") che utilizzano l'applicazione mobile <strong>LavoraMI</strong> (di seguito "App"), disponibile su piattaforme iOS e Android.</p>
@@ -36,7 +43,7 @@
                 <h2>1. Titolare del Trattamento</h2>
                 <p>Il Titolare del trattamento dei dati (colui che decide come e perché i tuoi dati vengono trattati) è:</p>
                 <ul>
-                    <li><strong>Nome / Ragione Sociale:</strong> </li>
+                    <li><strong>Nome / Ragione Sociale: Simone Gallotti</strong> </li>
                     <li><strong>Indirizzo Sede:</strong> Milano</li>
                     <li><strong>Email di contatto:</strong> <a href="mailto:info@lavorami.it">info@lavorami.it</a></li>
                 </ul>
@@ -135,6 +142,13 @@
                 <p class="small text-white opacity-50">&copy; 2026 LavoraMI Project. All rights reserved.</p>
             </div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script><script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
+        <script>const lenis = new Lenis({ autoRaf: true });</script>
+        <script>
+            window.addEventListener('load', () => {
+                const preloader = document.getElementById('preloader');
+                setTimeout(() => {preloader.classList.add('loader-hidden');}, 500);
+            });
+        </script>
     </body>
 </html>
