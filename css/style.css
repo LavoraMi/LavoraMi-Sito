@@ -561,4 +561,61 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
     visibility: visible;
 }
 
+.team-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 12px;
+
+    max-width: 70px;
+}
+
+.team-card{
+    width:500px;
+    min-height:300px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.swiper-slide {
+    width: 250px !important; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.screenshot-item img {
+    width: 250px !important; 
+    height: auto;
+    border-radius: 18px;
+    display: block;
+    user-select: none;
+    pointer-events: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.screenshot-caption {
+    margin-top: 12px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Pulizia Swiper */
+.swiper {
+    width: 100%;
+    padding: 20px 0 60px 0 !important;
+}
+
+#screenshots {
+    overflow: hidden;
+}
+
 #backToTop:hover {transform: translateY(-4px);}
