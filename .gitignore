@@ -1,2 +1,3 @@
-#ENV FILES
+#FILES
 config.js
+.vscode/
