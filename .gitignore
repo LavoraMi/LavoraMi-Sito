@@ -1,3 +1,4 @@
 #FILES
 config.js
 .vscode/
+.DS_Store
