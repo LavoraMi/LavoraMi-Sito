@@ -38,13 +38,6 @@ window.addEventListener('load', async () => {
         window.ENV.SUPABASE_URL,
         window.ENV.SUPABASE_ANON_KEY
     );
-
-    //*GET THE USER SESSION
-    ///In this section of the code, we will check the session if exist or not
-    const { data, error } = await supabaseClient.auth.getSession()
-    const userSession = data?.session;
-
-    if(userSession) window.location.href = "/account/manage"
 });
 
 //*CLICK ON BUTTON
@@ -55,10 +48,16 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
     ///In this section of the code, we grab the email and the password d.id elements.
     const emailValue = document.getElementById("email").value;
     const passwordValue = document.getElementById("password").value;
+    const fullNameValue = document.getElementById("nickname").value;
 
-    const { user, session, error } = await supabaseClient.auth.signInWithPassword({
+    const { data, error } = await supabaseClient.auth.signUp({
         email: emailValue,
         password: passwordValue,
+        options: {
+            data: {
+                first_name: fullNameValue
+            }
+        }
     })
 
     if (error) {
@@ -68,7 +67,7 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
 
     document.getElementById('successMessage').classList.remove('d-none');
     document.getElementById('loginForm').style.display = 'none';
-    setTimeout(() => window.location.href = '/account/manage', 2000);
+    setTimeout(() => window.location.href = '/account/login', 4000);
 })
 
 document.getElementById("googleLogin").addEventListener("click", async (event) => {
@@ -87,5 +86,4 @@ document.getElementById("googleLogin").addEventListener("click", async (event) =
 
 //*OTHER ACTIONS
 ///In this section of the code, we can navigate to the Account folder for Reset the Password and create a new Account
-document.getElementById("passwordRecovery").addEventListener("click", () => {window.location.href = "/account/request-reset-password";})
-document.getElementById("createAccount").addEventListener("click", () => {window.location.href = "/account/create-account";})
+document.getElementById("backToLogin").addEventListener("click", () => {window.location.href = "/account/login";})

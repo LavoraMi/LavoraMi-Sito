@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login - LavoraMi</title>
+        <title>Crea un Account - LavoraMi</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css">
         <link href="https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700,800&display=swap" rel="stylesheet">
@@ -32,18 +32,21 @@
         </nav>
         <div class="auth-wrapper">
             <div class="auth-card text-center">
-                <h2>Login</h2>
-                <p>Effettua il Login al tuo Account LavoraMi.</p>
-
+                <h2>Crea un Account</h2>
+                <p>Inizia ad essere aggiornato su tutto. Crea un account.</p>
                 <div id="successMessage" class="alert alert-success alert-message d-none" role="alert">
-                    <i class="bi bi-check-circle"></i> Login effettuato con successo!
+                    <i class="bi bi-check-circle"></i> L'Account è stato creato, conferma la tua mail con l'email che ti abbiamo inviato!
                 </div>
-
                 <div id="errorMessage" class="alert alert-danger alert-message d-none" role="alert">
                     <i class="bi bi-exclamation-circle"></i> <span id="errorText"></span>
                 </div>
-
                 <form id="loginForm" class="text-start">
+                    <div class="mb-3">
+                        <label for="nickname" class="form-label">Nome completo</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="nickname" placeholder="Nome Cognome" required>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <div class="input-group">
@@ -59,19 +62,16 @@
                             </span>
                         </div>
                         <div id="passwordError" class="text-danger mt-2 small d-none">
-                            <i class="bi bi-exclamation-circle"></i> Le credenziali che hai inserito sono errate.
+                            <i class="bi bi-exclamation-circle"></i> Errore durante la creazione dell'account.
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-accent w-100" id="submitBtn">Login</button><br><br>
-                    <h5>Accedi con</h5>
+                    <button type="submit" class="btn btn-accent w-100" id="submitBtn">Crea Account</button><br><br>
+                    <h5>Crea un account con</h5>
                     <hr>
-                    <button class="btn btn-white w-100" id="googleLogin"><img src="../img/google_logo.webp" alt="Google Logo" width="25px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Google</button><br><br>
+                    <button class="btn btn-white w-100" id="googleLogin"><img src="../img/google_logo.webp" alt="Google Logo" width="25px" height="25px" style="display: inline;">&nbsp;&nbsp;Registrati con Google</button><br><br>
                     <div style="display: flex; gap: 15px;">
-                        <div id="passwordRecovery" class="text-danger mt-2 small d-block" style="cursor: pointer;">
-                            <i class="bi bi-question-circle-fill"></i> Password Dimenticata?
-                        </div>
-                        <div id="createAccount" class="text-danger mt-2 small d-block" style="cursor: pointer;">
-                            <i class="bi bi-person-fill-add"></i> Non hai un account?
+                        <div id="backToLogin" class="text-danger mt-2 small d-block" style="cursor: pointer;">
+                            <i class="bi bi-box-arrow-in-right"></i> Torna al Login
                         </div>
                     </div>
                 </form>
@@ -79,7 +79,7 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.99.2"></script>
-        <script src="/config.js"></script><script src="../js/db/login.js"></script>
+        <script src="/config.js"></script><script src="../js/db/create_account.js"></script>
         <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d8671f03-dd54-4364-93b3-38a10878e903" data-blockingmode="auto" type="text/javascript"></script>
     </body>
 </html>
