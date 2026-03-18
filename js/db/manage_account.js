@@ -148,7 +148,7 @@ async function deleteAccount(){
     }
 
     //*REDIRECT TO LOGIN PAGE
-    window.location.href = "/account/login"
+    signOut();
 }
 
 document.getElementById('modalClose').addEventListener('click', () => {closeModal('modalOneButtonOverlay');});
