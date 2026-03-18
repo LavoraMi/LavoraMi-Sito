@@ -22,7 +22,7 @@ window.addEventListener('load', async () => {
     console.log('[ℹ️INFO] Type: ', type);
 
     if (!tokenHash) {
-        showError('Errore durante la verifica della tua mail. Link non valido.');
+        showError('Errore durante la verifica. Link non valido.');
         return;
     }
 
