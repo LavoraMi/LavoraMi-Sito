@@ -383,7 +383,6 @@ body.light-mode .screenshot-item img {background: transparent;}
     position: relative;
     z-index: 1;
 }
-
 .waitlist-form {max-width: 520px;}
 
 .input-group-waitlist {
@@ -413,7 +412,6 @@ body.light-mode .screenshot-item img {background: transparent;}
 }
 
 .waitlist-input::placeholder {color: rgba(255, 255, 255, 0.35);}
-
 .waitlist-input:-webkit-autofill,
 .waitlist-input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #0f0f0f inset;
@@ -529,17 +527,10 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
         padding: 14px;
         width: 100%;
     }
-
-    .input-group-waitlist:focus-within {
-        box-shadow: none;
-    }
+    .input-group-waitlist:focus-within {box-shadow: none;}
 }
-
-    .waitlist-stat-number {
-        font-size: 1.6rem;
-    }
-
-    #backToTop {
+.waitlist-stat-number {font-size: 1.6rem;}
+#backToTop {
     position: fixed;
     bottom: 30px;
     right: 30px;
@@ -603,3 +594,9 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
 }
 
 #backToTop:hover {transform: translateY(-4px);}
+
+.btn-back i {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+.btn-back:hover i {transform: translateX(-3px);}
