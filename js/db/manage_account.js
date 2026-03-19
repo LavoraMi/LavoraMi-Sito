@@ -67,6 +67,7 @@ window.addEventListener('load', async () => {
         const providerType = params.get('provider');
         document.getElementById('editPassword').style.display = (providerType === "google") ? "none" : "display";
         document.getElementById('loggedInWithGoogle').style.display = (providerType === "google") ? "display" : "none";
+        document.getElementById('loggedInWithApple').style.display = (providerType === "apple") ? "display" : "none";
     }
     catch(error){
         console.log("[ℹ️INFO]: " + error)

@@ -84,6 +84,20 @@ document.getElementById("googleLogin").addEventListener("click", async (event) =
         showError('Errore login con Google: ' + error.message);
 });
 
+document.getElementById("appleLogin").addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+        provider: 'apple',
+        options: {
+            redirectTo: window.location.origin + '/account/manage?provider=apple'
+        }
+    });
+
+    if (error)
+        showError('Errore login con Apple: ' + error.message);
+});
+
 //*OTHER ACTIONS
 ///In this section of the code, we can navigate to the Account folder for Reset the Password and create a new Account
 document.getElementById("backToLogin").addEventListener("click", () => {window.location.href = "/account/login";})
