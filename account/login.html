@@ -14,7 +14,7 @@
     <body>
         <div id="preloader">
             <div class="loader-content">
-                <img src="../img/icon.webp" alt="LavoraMI Logo" class="pulse-logo">
+                <img src="../img/icon.webp" alt="LavoraMI Logo" class="pulse-logo" draggable="false">
                 <div class="loader-line"></div>
             </div>
         </div>
@@ -34,15 +34,12 @@
             <div class="auth-card text-center">
                 <h2>Login</h2>
                 <p>Effettua il Login al tuo Account LavoraMi.</p>
-
                 <div id="successMessage" class="alert alert-success alert-message d-none" role="alert">
                     <i class="bi bi-check-circle"></i> Login effettuato con successo!
                 </div>
-
                 <div id="errorMessage" class="alert alert-danger alert-message d-none" role="alert">
                     <i class="bi bi-exclamation-circle"></i> <span id="errorText"></span>
                 </div>
-
                 <form id="loginForm" class="text-start">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -67,7 +64,7 @@
                     <h5>Accedi con</h5>
                     <hr>
                     <button class="btn btn-white w-100" id="googleLogin"><img src="../img/google_logo.webp" alt="Sign In with Google" width="25px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Google</button><br><br>
-                    <button class="btn btn-black w-100" id="appleLogin"><img src="../img/apple_logo.png" alt="Sign In with Apple" width="22px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Apple</button><br><br>
+                    <button class="btn btn-black w-100" id="appleLogin"><img src="../img/apple_logo.webp" alt="Sign In with Apple" width="22px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Apple</button><br><br>
                     <div style="display: flex; gap: 15px;">
                         <div id="passwordRecovery" class="text-danger mt-2 small d-block" style="cursor: pointer;">
                             <i class="bi bi-question-circle-fill"></i> Password Dimenticata?
