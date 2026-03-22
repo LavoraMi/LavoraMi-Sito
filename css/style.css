@@ -595,8 +595,72 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
 
 #backToTop:hover {transform: translateY(-4px);}
 
-.btn-back i {
-    display: inline-block;
-    transition: transform 0.3s ease;
+.btn-store {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 22px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    min-width: 170px;
 }
-.btn-back:hover i {transform: translateX(-3px);}
+
+.btn-store:hover {
+    transform: translateY(-3px);
+    color: #fff;
+    border-color: var(--accent);
+    background: rgba(255, 0, 21, 0.08);
+    box-shadow: 0 8px 24px rgba(255, 0, 21, 0.2);
+}
+
+.btn-store-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.btn-store-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.btn-store-sub {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.65;
+    letter-spacing: 0.3px;
+    line-height: 1;
+    margin-bottom: 3px;
+}
+
+.btn-store-name {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 0.2px;
+}
+
+body.light-mode .btn-store {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-main);
+}
+
+body.light-mode .btn-store:hover {
+    color: var(--text-main);
+    border-color: var(--accent);
+    background: rgba(255, 0, 21, 0.05);
+    box-shadow: 0 8px 24px rgba(255, 0, 21, 0.12);
+}
+
+@media (max-width: 576px) {
+    .btn-store { min-width: 150px; padding: 10px 18px; }
+    .btn-store-icon { font-size: 1.5rem; }
+    .btn-store-name { font-size: 0.9rem; }
+}
