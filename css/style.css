@@ -664,3 +664,22 @@ body.light-mode .btn-store:hover {
     .btn-store-icon { font-size: 1.5rem; }
     .btn-store-name { font-size: 0.9rem; }
 }
+
+.loader-line.hide-line {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.zoom-explode {animation: zoomIntoRed 0.5s cubic-bezier(0.85, 0, 0.15, 1) forwards !important;}
+
+@keyframes zoomIntoRed {
+    0% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+    70% { opacity: 1; }
+    100% { 
+        transform: scale(0);
+        opacity: 0;
+    }
+}
