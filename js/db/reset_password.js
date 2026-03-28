@@ -70,7 +70,14 @@ document.getElementById('resetPasswordForm').addEventListener('submit', function
 window.addEventListener('load', async () => {
     //Preloader stuffs
     const preloader = document.getElementById('preloader');
-    if (preloader) setTimeout(() => preloader.classList.add('loader-hidden'), 500);
+    const logo = document.querySelector('.pulse-logo');
+    const loaderLine = document.querySelector('.loader-line');
+
+    setTimeout(() => {
+        loaderLine.classList.add('hide-line');
+        logo.classList.add('zoom-explode');
+        setTimeout(() => {preloader.classList.add('loader-hidden');}, 500); 
+    }, 500); 
 
     const params = new URLSearchParams(window.location.search);
     const tokenHash = params.get('token_hash');
