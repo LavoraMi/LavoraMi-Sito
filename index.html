@@ -515,40 +515,36 @@
 
             backToTop.addEventListener('click', () => {lenis.scrollTo(0, { duration: 1.5 });});
             
-function generaQR() {
-    var isDark = !document.body.classList.contains('light-mode');
-    var colorDark  = isDark ? '#ffffff' : '#000000';
-    var colorLight = isDark ? '#00000000' : '#ffffff';
+            function generaQR() {
+                var isDark = !document.body.classList.contains('light-mode');
+                var colorDark  = isDark ? '#ffffff' : '#000000';
+                var colorLight = isDark ? '#00000000' : '#ffffff';
 
-    // Svuota i div prima di rigenerare
-    document.getElementById('qr-ios').innerHTML = '';
-    document.getElementById('qr-android').innerHTML = '';
+                document.getElementById('qr-ios').innerHTML = '';
+                document.getElementById('qr-android').innerHTML = '';
 
-    new QRCode(document.getElementById('qr-ios'), {
-        text: 'https://apps.apple.com/us/app/lavorami/id6760344298',
-        width: 110,
-        height: 110,
-        colorDark: colorDark,
-        colorLight: colorLight,
-        correctLevel: QRCode.CorrectLevel.H
-    });
+                new QRCode(document.getElementById('qr-ios'), {
+                    text: 'https://apps.apple.com/us/app/lavorami/id6760344298',
+                    width: 110,
+                    height: 110,
+                    colorDark: colorDark,
+                    colorLight: colorLight,
+                    correctLevel: QRCode.CorrectLevel.H
+                });
 
-    new QRCode(document.getElementById('qr-android'), {
-        text: 'https://play.google.com/store/apps/details?id=com.andreafilice.lavorami',
-        width: 110,
-        height: 110,
-        colorDark: colorDark,
-        colorLight: colorLight,
-        correctLevel: QRCode.CorrectLevel.H
-    });
-}
+                new QRCode(document.getElementById('qr-android'), {
+                    text: 'https://play.google.com/store/apps/details?id=com.andreafilice.lavorami',
+                    width: 110,
+                    height: 110,
+                    colorDark: colorDark,
+                    colorLight: colorLight,
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            }
 
-generaQR();
+            generaQR();
 
-document.getElementById('theme-toggle').addEventListener('click', function () {
-    setTimeout(generaQR, 50); // piccolo delay per aspettare che la classe venga aggiunta
-});
-           
+            document.getElementById('theme-toggle').addEventListener('click', function () {setTimeout(generaQR, 50);});
         </script>
         <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d8671f03-dd54-4364-93b3-38a10878e903" data-blockingmode="auto" type="text/javascript"></script>
     </body>

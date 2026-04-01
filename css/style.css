@@ -684,14 +684,8 @@ body.light-mode .btn-store:hover {
     }
 }
 
-
-.qr-section {
-    display: none; 
-}
-
-@media (min-width: 992px) {
-    .qr-section { display: block; }
-}
+.qr-section {display: none; }
+@media (min-width: 992px) {.qr-section { display: block; } }
 
 .qr-intro {
     font-size: 0.82rem;
@@ -740,7 +734,6 @@ body.light-mode .btn-store:hover {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Light mode */
 body.light-mode .qr-codes {
     background: rgba(0, 0, 0, 0.03);
     border-color: rgba(0, 0, 0, 0.1);
