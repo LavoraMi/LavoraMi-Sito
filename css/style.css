@@ -683,3 +683,67 @@ body.light-mode .btn-store:hover {
         opacity: 0;
     }
 }
+
+
+.qr-section {
+    display: none; 
+}
+
+@media (min-width: 992px) {
+    .qr-section { display: block; }
+}
+
+.qr-intro {
+    font-size: 0.82rem;
+    color: #888;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qr-codes {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px 22px;
+    backdrop-filter: blur(10px);
+}
+
+.qr-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.qr-card canvas {
+    border-radius: 10px;
+    display: block;
+}
+
+.qr-card-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.qr-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Light mode */
+body.light-mode .qr-codes {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+body.light-mode .qr-card-label { color: #555; }
+body.light-mode .qr-divider { background: rgba(0, 0, 0, 0.1); }
