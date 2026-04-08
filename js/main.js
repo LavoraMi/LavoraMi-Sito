@@ -18,6 +18,39 @@ window.addEventListener('load', () => {
 ///In this section of the code, we implement a Theme-Switcher for our website.
 ///These Constant variables are the HTML elements to edit when switching theme.
 
+function aggiornaImmaginiTema() {
+    const isLight = document.body.classList.contains('light-mode');
+    document.querySelectorAll('img[data-dark][data-light]').forEach(img => {
+        img.src = isLight ? img.dataset.light : img.dataset.dark;
+    });
+}
+
+let currentOS = 'ios';
+
+function switchOS(os) {
+    const ios = document.getElementById('scroller-ios');
+    const android = document.getElementById('scroller-android');
+    const btnIos = document.getElementById('btn-ios');
+    const btnAndroid = document.getElementById('btn-android');
+
+    currentOS = os;
+
+    if (os === 'ios') {
+        ios.style.display = 'flex';
+        android.style.display = 'none';
+        btnIos.classList.add('active');
+        btnAndroid.classList.remove('active');
+    } else {
+        ios.style.display = 'none';
+        android.style.display = 'flex';
+        btnAndroid.classList.add('active');
+        btnIos.classList.remove('active');
+    }
+
+     aggiornaImmaginiTema();
+}
+
+
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
 const body = document.body;
@@ -41,10 +74,14 @@ if (localStorage.getItem('theme') === 'light') {
     themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
 }
 
+aggiornaImmaginiTema();
+
 ///Here is where we change effectly the theme. 
 ///This Arrow Function is for add a Listener to our ThemeSwitcherButton into the HTML Page.
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('light-mode');
+    
+
     
     if (body.classList.contains('light-mode')) {
         themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
@@ -53,6 +90,9 @@ themeToggle.addEventListener('click', () => {
         themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
         localStorage.setItem('theme', 'dark');
     }
+
+        aggiornaImmaginiTema();
 });
 
-document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"})
+
+document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"});
