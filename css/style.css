@@ -784,7 +784,6 @@ body.light-mode .qr-divider { background: rgba(0, 0, 0, 0.1); }
 
 .os-toggle-btn:not(.active):hover { color: rgba(255, 255, 255, 0.8); }
 
-/* Light mode switch */
 body.light-mode .os-toggle {
     background: rgba(0, 0, 0, 0.04);
     border-color: rgba(0, 0, 0, 0.12);

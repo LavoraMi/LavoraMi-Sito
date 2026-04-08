@@ -36,18 +36,18 @@ function switchOS(os) {
     currentOS = os;
 
     if (os === 'ios') {
-        ios.style.display = 'flex';
-        android.style.display = 'none';
         btnIos.classList.add('active');
         btnAndroid.classList.remove('active');
-    } else {
-        ios.style.display = 'none';
-        android.style.display = 'flex';
+    } 
+    else {
         btnAndroid.classList.add('active');
         btnIos.classList.remove('active');
     }
 
-     aggiornaImmaginiTema();
+    ios.style.display = (os === 'ios') ? 'flex' : 'none';
+    android.style.display = (os === 'ios') ? 'none' : 'flex';
+
+    aggiornaImmaginiTema();
 }
 
 
@@ -80,9 +80,6 @@ aggiornaImmaginiTema();
 ///This Arrow Function is for add a Listener to our ThemeSwitcherButton into the HTML Page.
 themeToggle.addEventListener('click', () => {
     body.classList.toggle('light-mode');
-    
-
-    
     if (body.classList.contains('light-mode')) {
         themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
         localStorage.setItem('theme', 'light');
@@ -93,6 +90,5 @@ themeToggle.addEventListener('click', () => {
 
         aggiornaImmaginiTema();
 });
-
 
 document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"});
