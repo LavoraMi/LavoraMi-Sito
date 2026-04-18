@@ -29,7 +29,9 @@ let currentOS = 'ios';
 
 function switchOS(os) {
     const ios = document.getElementById('scroller-ios');
+    const iOSHome = document.getElementById('iOSHome');
     const android = document.getElementById('scroller-android');
+    const androidHome = document.getElementById('androidHome');
     const btnIos = document.getElementById('btn-ios');
     const btnAndroid = document.getElementById('btn-android');
 
@@ -45,7 +47,9 @@ function switchOS(os) {
     }
 
     ios.style.display = (os === 'ios') ? 'flex' : 'none';
+    iOSHome.style.display = (os === 'ios') ? 'block' : 'none';
     android.style.display = (os === 'ios') ? 'none' : 'flex';
+    androidHome.style.display = (os === 'ios') ? 'none' : 'block';
 
     aggiornaImmaginiTema();
 }
@@ -88,7 +92,7 @@ themeToggle.addEventListener('click', () => {
         localStorage.setItem('theme', 'dark');
     }
 
-        aggiornaImmaginiTema();
+    aggiornaImmaginiTema();
 });
 
 document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"});
