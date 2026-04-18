@@ -52,6 +52,15 @@ window.addEventListener('load', async () => {
     const userSession = data?.session;
 
     if(userSession) window.location.href = "/account/manage"
+
+    try{
+        const params = new URLSearchParams(window.location.search);
+        const messageParam = params.get('message_id');
+        if(messageParam === 'deletegoogle') document.getElementById('userInfo').classList.remove('d-none');
+    }
+    catch(error){
+        console.log("[ℹ️INFO]: " + error)
+    }
 });
 
 //*CLICK ON BUTTON
