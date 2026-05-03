@@ -20,9 +20,7 @@ window.addEventListener('load', () => {
 
 function aggiornaImmaginiTema() {
     const isLight = document.body.classList.contains('light-mode');
-    document.querySelectorAll('img[data-dark][data-light]').forEach(img => {
-        img.src = isLight ? img.dataset.light : img.dataset.dark;
-    });
+    document.querySelectorAll('img[data-dark][data-light]').forEach(img => {img.src = isLight ? img.dataset.light : img.dataset.dark;});
 }
 
 let currentOS = 'ios';
