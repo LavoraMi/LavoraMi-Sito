@@ -83,10 +83,22 @@ window.addEventListener('load', async () => {
     console.log('[ℹ️INFO] User: ', user.email);
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
     console.log("[ℹ️INFO] UserName: " + displayName)
+    extractInitials(displayName)
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
     document.getElementById("displayFirstName").innerHTML = displayName;
 });
+
+function extractInitials(nickname) {
+    let values = nickname.split(' ')
+    let finalLetters;
+
+    if(values.length == 0) finalLetters = "?"
+    else if(values.length == 1) finalLetters = nickname.charAt(0)
+    else finalLetters = values[0].charAt(0) + values[1].charAt(0);
+
+    document.getElementById("initials").innerText = finalLetters;
+}
 
 function openModal(overlayId, msg, title, iconName) {
     document.getElementById(overlayId).classList.add('open');

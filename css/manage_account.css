@@ -210,3 +210,33 @@ body {
 
 .lm-btn-success { background: linear-gradient(135deg,#166007,#00ff1a); color: #001a13; }
 .lm-btn-success:hover { box-shadow: 0 6px 20px rgba(2, 84, 20, 0.35); }
+
+.profile-avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--accent) 0%, #ff4757 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(255, 0, 21, 0.3);
+}
+
+.profile-avatar span {
+    color: white;
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
