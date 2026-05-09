@@ -62,6 +62,7 @@ window.addEventListener('load', async () => {
 
     if (!session) {
         showError('Sessione utente non valida.');
+        window.location.href = "/account/login"
         return;
     }
 
