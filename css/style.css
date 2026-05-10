@@ -155,7 +155,6 @@ footer {
 .screenshot-item {
     width: 280px;
     flex-shrink: 0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
@@ -186,8 +185,8 @@ footer {
     height: auto;
     display: block;
     border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s ease;
+    box-shadow: none;
 }
 
 .screenshot-caption {
@@ -574,7 +573,7 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
     display: block;
     user-select: none;
     pointer-events: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: none;
 }
 
 .screenshot-caption {
