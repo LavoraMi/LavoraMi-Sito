@@ -12,6 +12,18 @@ window.addEventListener('load', () => {
         logo.classList.add('zoom-explode');
         setTimeout(() => {preloader.classList.add('loader-hidden');}, 500); 
     }, 500); 
+
+    const params = new URLSearchParams(window.location.search);
+    const themeSelected = params.get('theme');
+
+    if(themeSelected === "light") {
+        body.classList.add('light-mode');
+        themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
+    }
+    else {
+        themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
+        localStorage.setItem('theme', 'dark');
+    }
 });
 
 //*THEME TOGGLE
