@@ -8,6 +8,33 @@ body {
     padding: 0 1rem 4rem;
 }
 
+body.light-mode {
+    background: #f8f9fa;
+    color: #1a1a1a;
+}
+
+body.light-mode nav a {color: #1a1a1a;}
+body.light-mode .back-link {color: #4a4a4a;}
+body.light-mode .back-link:hover {color: #ff0015;}
+body.light-mode .hero h1,
+body.light-mode h2,
+body.light-mode strong {color: #1a1a1a;}
+body.light-mode h3 {color: #333333;}
+body.light-mode .hero .last-update {color: #4a4a4a;}
+body.light-mode hr,
+body.light-mode h2,
+body.light-mode footer {border-color: #e2e8f0;}
+body.light-mode a {color: #ff0015;}
+body.light-mode .note {
+    background: #ffffff;
+    border-left: 3px solid #ff0015;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+body.light-mode footer {color: #4a4a4a;}
+body.light-mode footer strong {color: #1a1a1a;}
+body.light-mode footer .footer-links a {color: #ff0015;}
+
 nav {
     display: flex;
     align-items: center;

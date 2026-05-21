@@ -166,5 +166,13 @@
             </footer>
         </div>
         <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script><script>const lenis = new Lenis({ autoRaf: true });</script>
+        <script>
+            window.addEventListener('load', () => {
+                const params = new URLSearchParams(window.location.search);
+                const themeSelected = params.get('theme');
+
+                if(themeSelected === "light") document.body.classList.add("light-mode")
+            });
+        </script>
     </body>
 </html>
