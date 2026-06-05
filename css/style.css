@@ -20,7 +20,7 @@
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: 'General Sans', sans-serif;
+    font-family: 'Stack Sans Headline', sans-serif;
     overflow-x: hidden;
 }
 nav{background: var(--navbar-black);}
