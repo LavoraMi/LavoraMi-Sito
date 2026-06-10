@@ -43,13 +43,13 @@ body, p, .lead, .subtitle, .screenshot-subtitle,
 .hero-section .lead, .hero-section .text-accent, .hero-section .qr-intro,
 .hero-section .small, .screenshot-subtitle, .scroller-track .screenshot-caption p,
 .scroller-track .screenshot-caption h5 + p, footer .small, #help .text-white.small,
-#helpUs .text-white.small, .btn-store-text span, .btn-store-sub {font-family: 'Inter', sans-serif !important;}
+#helpUs .text-white.small {font-family: 'Inter', sans-serif !important;}
 
 .glass-card h4 + p, .glass-card h4 ~ p, .team-card h5 + p,
 .screenshot-caption h5 ~ p, .card-scioperi h2 + p, .card-scioperi p,
 .list-unstyled .d-flex .opacity-75, .list-unstyled small, .team-card .small,
 .glass-card ul li, .glass-card .list-unstyled, .feature-icon + p {font-family: 'Inter', sans-serif !important;}
-.navbar-brand, .hero-title, .section-title {font-family: 'Stack Sans Headline', sans-serif !important;}
+.navbar-brand, .hero-title, .section-title, .btn-store-text span, .btn-store-sub {font-family: 'Stack Sans Headline', sans-serif !important;}
 
 .os-toggle-btn {
     font-family: 'Stack Sans Headline', sans-serif !important;
