@@ -17,10 +17,55 @@
 
 .nav-link{font-weight: 600;}
 
+h1, h2, h3, h4, h5, h6,
+.hero-title, .section-title, .display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+.navbar-brand, .team-card h5, .glass-card h4, .card-scioperi h2, .screenshot-caption h5,
+.btn-store-name, .feature-icon + h4, #chisiamo .glass-card h4,
+.sciopero-circle .display-4, .fw-bold.mb-4, .badge + h2, .hero-section h1 span,
+.hero-section .hero-title, .section-title.display-6, #scioperi h2, #funzionalita h2,
+#chisiamo h2, #help h2, #helpUs h2, #screenshots h2, .screenshot-caption h5,
+.team-card h5, .glass-card .mb-3 h4, .card-scioperi h2, footer h4,
+.os-toggle-btn, .btn-store-name {
+    font-family: 'Stack Sans Headline', sans-serif !important;
+    letter-spacing: -0.01em;
+}
+
+body, p, .lead, .subtitle, .screenshot-subtitle,
+.glass-card p, .text-white, .navbar-nav .nav-link, .btn-store-sub, .qr-intro, .qr-card-label,
+.team-card p, .list-unstyled, .small, footer .text-white, .opacity-75, .opacity-50, .card-scioperi p,
+.badge, .sciopero-circle .info-text, .screenshot-caption p, .btn, .btn-outline-light,
+#help .glass-card p, #helpUs .glass-card p, .scroller-track .screenshot-caption p,
+.feature-icon ~ p, .glass-card .text-white, .qr-section .qr-intro, button:not(.os-toggle-btn),
+.nav-link, .navbar-toggler, #backToTop, .accountButton, .theme-toggle, li, .list-unstyled li,
+.team-card .small, .glass-card .small, .card-scioperi .small, .text-accent, .letter-spacing-2,
+.text-uppercase, .btn-store-sub, .qr-card-label, .sciopero-circle .info-text,
+.warning-text, .status-text, #preloader .loader-content, .navbar .container,
+.hero-section .lead, .hero-section .text-accent, .hero-section .qr-intro,
+.hero-section .small, .screenshot-subtitle, .scroller-track .screenshot-caption p,
+.scroller-track .screenshot-caption h5 + p, footer .small, #help .text-white.small,
+#helpUs .text-white.small, .btn-store-text span, .btn-store-sub {font-family: 'Inter', sans-serif !important;}
+
+.glass-card h4 + p, .glass-card h4 ~ p, .team-card h5 + p,
+.screenshot-caption h5 ~ p, .card-scioperi h2 + p, .card-scioperi p,
+.list-unstyled .d-flex .opacity-75, .list-unstyled small, .team-card .small,
+.glass-card ul li, .glass-card .list-unstyled, .feature-icon + p {font-family: 'Inter', sans-serif !important;}
+.navbar-brand, .hero-title, .section-title {font-family: 'Stack Sans Headline', sans-serif !important;}
+
+.os-toggle-btn {
+    font-family: 'Stack Sans Headline', sans-serif !important;
+    font-weight: 600;
+}
+.bi, .bi::before {font-family: 'bootstrap-icons' !important;}
+.screenshot-subtitle, .lead, .qr-intro, .text-white.medium, .glass-card .text-white.medium {
+    font-weight: 450;
+    letter-spacing: -0.2px;
+}
+h1, h2, .hero-title, .section-title {font-weight: 700 !important;}
+h3, h4 {font-weight: 600 !important;}
+
 body {
     background-color: var(--bg-dark);
     color: var(--text-main);
-    font-family: 'General Sans', sans-serif;
     overflow-x: hidden;
 }
 nav{background: var(--navbar-black);}
@@ -756,7 +801,6 @@ body.light-mode .qr-divider { background: rgba(0, 0, 0, 0.1); }
     border: none;
     background: transparent;
     color: rgba(255, 255, 255, 0.45);
-    font-family: 'General Sans', sans-serif;
     font-weight: 600;
     font-size: 0.9rem;
     cursor: pointer;
