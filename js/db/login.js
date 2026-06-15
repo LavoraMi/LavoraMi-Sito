@@ -85,7 +85,7 @@ document.getElementById("submitBtn").addEventListener("click", async (event) => 
 
     document.getElementById('successMessage').classList.remove('d-none');
     document.getElementById('loginForm').style.display = 'none';
-    setTimeout(() => window.location.href = '/account/manage', 2000);
+    setTimeout(() => window.location.href = '/account/manage', 0);
 })
 
 document.getElementById("googleLogin").addEventListener("click", async (event) => {
