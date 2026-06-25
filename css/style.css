@@ -829,3 +829,20 @@ body.light-mode .os-toggle {
 body.light-mode .os-toggle-btn:not(.active) { color: rgba(0, 0, 0, 0.4); }
 body.light-mode .os-toggle-btn:not(.active):hover { color: rgba(0, 0, 0, 0.75); }
 body.light-mode .os-toggle-btn.active { color: #fff; }
+
+.os-toggle-btn .bi-apple { line-height: 1; position: relative; top: -2px; }
+
+.hero-title span:not(.hero-accent) {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: var(--text-main, #ffffff) !important;
+    color: var(--text-main, #ffffff) !important;
+}
+.hero-title .hero-accent {
+    background: var(--accent) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
