@@ -35,7 +35,13 @@ function aggiornaImmaginiTema() {
     document.querySelectorAll('img[data-dark][data-light]').forEach(img => {img.src = isLight ? img.dataset.light : img.dataset.dark;});
 }
 
-let currentOS = 'ios';
+let currentOS = "Android";
+const isIOSorIPad = /iPhone|iPad|iPod/i.test(navigator.userAgent)
+const isModernIPad = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+if (isIOSorIPad || isModernIPad) currentOS = "ios";
+
+switchOS(currentOS)
 
 function switchOS(os) {
     const ios = document.getElementById('scroller-ios');
@@ -63,7 +69,6 @@ function switchOS(os) {
 
     aggiornaImmaginiTema();
 }
-
 
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-icon');
