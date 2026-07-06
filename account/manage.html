@@ -74,6 +74,9 @@
                     <button class="btn btn-blue w-100 mb-3" id="deleteAccountBtn">
                         <i class="bi bi-trash3-fill me-2"></i> Elimina Account
                     </button>
+                    <button class="btn btn-blue w-100 mb-3" id="editCloudPreferences">
+                        <i class="bi bi-cloudy-fill me-2"></i> Preferenze Dati
+                    </button>
                     <button class="btn btn-blue w-100 mb-4" id="requestDataBtn">
                         <i class="bi bi-person-vcard-fill me-2"></i> Richiedi i tuoi dati
                     </button>
@@ -112,6 +115,38 @@
                         <p id="modal_deps_success"></p>
                         <div class="lm-modal-actions">
                             <button class="lm-btn lm-btn-success" id="modalSuccessClose">Chiudi</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="lm-modal-overlay" id="modalPreferences">
+                    <div class="lm-modal">
+                        <div class="lm-modal-icon danger"><i class="bi bi-cloud-arrow-up-fill"></i></div>
+                        
+                        <h3 id="modal_settings_title">Scegli i tuoi Dati</h3>
+                        <hr class="lm-modal-divider">
+                        <p id="modal_settings_deps">Scegli che tipologia di dati vuoi che vengano salvati nei nostri Database, per poterci accedere sempre dal tuo Account.</p>
+                        
+                        <div class="lm-settings-group">
+                            <div class="lm-setting-item">
+                                <span>Linee Preferite</span>
+                                <label class="lm-switch">
+                                    <input type="checkbox" id="sliderFavorites">
+                                    <span class="lm-slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="lm-setting-item">
+                                <span>Le tue linee</span>
+                                <label class="lm-switch">
+                                    <input type="checkbox" id="sliderYourLines">
+                                    <span class="lm-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="lm-modal-actions mt-2">
+                            <button class="lm-btn lm-btn-ghost" id="modalSettingsClose">Annulla</button>
+                            <button class="lm-btn lm-btn-danger" id="modalSettingsSave">Salva</button>
                         </div>
                     </div>
                 </div>

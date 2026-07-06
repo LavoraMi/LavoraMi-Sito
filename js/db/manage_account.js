@@ -73,6 +73,7 @@ window.addEventListener('load', async () => {
     try{
         const params = new URLSearchParams(window.location.search);
         const providerType = params.get('provider');
+
         document.getElementById('editPassword').style.display = (providerType === "google" || providerType === "apple") ? "none" : "display";
         document.getElementById('loggedInWithGoogle').style.display = (providerType === "google") ? "display" : "none";
         document.getElementById('loggedInWithApple').style.display = (providerType === "apple") ? "display" : "none";
@@ -85,10 +86,35 @@ window.addEventListener('load', async () => {
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
     console.log("[ℹ️INFO] UserName: " + displayName)
     extractInitials(displayName)
+
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
     document.getElementById("displayFirstName").innerHTML = displayName;
+
+    document.getElementById("sliderFavorites").checked = (await fetchUserPreferences(user.email)).enable_favorites
+    document.getElementById("sliderYourLines").checked = (await fetchUserPreferences(user.email)).enable_your_lines
 });
+
+//* FETCH USER PREFERENCES
+/// Fetch the user preferences from the server
+async function fetchUserPreferences(userEmail) {
+    const { data, error } = await supabaseClient
+        .from('userPreferences')
+        .select('enable_favorites, enable_your_lines')
+        .eq('email', userEmail)
+        .single();
+
+    if (error) {
+        if (error.code === 'PGRST116') console.log("[ℹ️INFO] Nessun record preferenze trovato. Applico valori di default (TRUE).");
+        else console.error("[❌ ERROR] Errore nel fetch delle preferenze:", error.message);
+        return { enable_favorites: true, enable_your_lines: true };
+    }
+
+    return {
+        enable_favorites: data.enable_favorites ?? true,
+        enable_your_lines: data.enable_your_lines ?? true
+    };
+}
 
 function extractInitials(nickname) {
     let values = nickname.split(' ')
@@ -121,10 +147,13 @@ document.getElementById("editPassword").addEventListener("click", async () => {o
 ///In this section, we call the addEventListener event to open the Modal.
 document.getElementById("deleteAccountBtn").addEventListener("click", () => openModal('modalLogoutOverlay', "Sei sicuro di voler eliminare il tuo account di LavoraMi?", "Elimina Account", "bi bi-trash-fill"));
 document.getElementById("logoutBtn").addEventListener("click", () => openModal('modalLogoutOverlay', "Sei sicuro di voler uscire dal tuo account?", "Esci", "bi bi-box-arrow-right"));
+document.getElementById("editCloudPreferences").addEventListener("click", () => openModal('modalPreferences', "", "", ""));
 document.getElementById("requestDataBtn").addEventListener("click", () => openModal('modalOneButtonOverlay', "Per richiedere il Download dei dati personali, apri l'app di LavoraMi e vai nella sezione: <b>Account</b> > <b>Richiedi i tuoi dati</b>.", "Attenzione", "bi bi-box-arrow-right"));
 
 document.getElementById('modalLogoutCancel').addEventListener('click', () => closeModal('modalLogoutOverlay'));
 document.getElementById('modalSuccessClose').addEventListener('click', () => closeModal('modalSuccess'));
+document.getElementById('modalSettingsClose').addEventListener('click', () => closeModal('modalPreferences'));
+document.getElementById('modalSettingsSave').addEventListener('click', () => closeModal('modalPreferences'));
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
     closeModal('modalLogoutOverlay');
 
