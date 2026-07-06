@@ -121,8 +121,8 @@ async function fetchUserPreferences(userEmail) {
 //* SAVE USER PREFERENCES
 /// Save or update the user preferences
 async function saveUserPreferences(userEmail) {
-    const isFavChecked = document.getElementById("switchFavorites").checked;
-    const isYourLinesChecked = document.getElementById("switchYourLines").checked;
+    const isFavChecked = document.getElementById("sliderFavorites").checked;
+    const isYourLinesChecked = document.getElementById("sliderYourLines").checked;
 
     const { error } = await supabaseClient
         .from('userPreferences')
