@@ -1,5 +1,5 @@
 let supabaseClient, supabaseAdmin;
-let user;
+let user, userEmail;
 
 //*SHOW ERROR TEXT
 ///This method is a refactor function, used for every case when an error occurs.
@@ -83,6 +83,8 @@ window.addEventListener('load', async () => {
     }
 
     console.log('[ℹ️INFO] User: ', user.email);
+    userEmail = user.email
+
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
     console.log("[ℹ️INFO] UserName: " + displayName)
     extractInitials(displayName)
@@ -180,7 +182,7 @@ document.getElementById('modalSettingsClose').addEventListener('click', () => cl
 document.getElementById('modalSettingsSave').addEventListener('click', async () => {
     closeModal('modalPreferences')
 
-    await saveUserPreferences(user.email)
+    await saveUserPreferences(userEmail)
 });
 
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
