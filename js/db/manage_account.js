@@ -101,7 +101,7 @@ async function fetchUserPreferences(userEmail) {
     const { data, error } = await supabaseClient
         .from('userPreferences')
         .select('enable_favorites, enable_your_lines')
-        .eq('email', userEmail)
+        .eq('user_email', userEmail)
         .single();
 
     if (error) {
