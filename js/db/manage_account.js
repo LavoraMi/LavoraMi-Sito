@@ -105,8 +105,8 @@ async function fetchUserPreferences(userEmail) {
         .single();
 
     if (error) {
-        if (error.code === 'PGRST116') console.log("[ℹ️INFO] Nessun record preferenze trovato. Applico valori di default (TRUE).");
-        else console.error("[❌ ERROR] Errore nel fetch delle preferenze:", error.message);
+        if (error.code === 'PGRST116') console.log("[ℹ️INFO] No records found.");
+        else console.error("[❌ ERROR] Error while fetching preferences:", error.message);
         return { enable_favorites: true, enable_your_lines: true };
     }
 
@@ -114,6 +114,29 @@ async function fetchUserPreferences(userEmail) {
         enable_favorites: data.enable_favorites ?? true,
         enable_your_lines: data.enable_your_lines ?? true
     };
+}
+
+//* SAVE USER PREFERENCES
+/// Save or update the user preferences
+async function saveUserPreferences(userEmail) {
+    const isFavChecked = document.getElementById("switchFavorites").checked;
+    const isYourLinesChecked = document.getElementById("switchYourLines").checked;
+
+    const { error } = await supabaseClient
+        .from('userPreferences')
+        .upsert({
+            user_email: userEmail,
+            enable_favorites: isFavChecked,
+            enable_your_lines: isYourLinesChecked
+        }, { onConflict: 'user_email' }); 
+
+    if (error) {
+        console.error("[❌ ERROR] Error while saving preferences:", error.message);
+        showError("Impossibile salvare le preferenze: " + error.message);
+        return false;
+    }
+
+    return true;
 }
 
 function extractInitials(nickname) {
@@ -153,7 +176,13 @@ document.getElementById("requestDataBtn").addEventListener("click", () => openMo
 document.getElementById('modalLogoutCancel').addEventListener('click', () => closeModal('modalLogoutOverlay'));
 document.getElementById('modalSuccessClose').addEventListener('click', () => closeModal('modalSuccess'));
 document.getElementById('modalSettingsClose').addEventListener('click', () => closeModal('modalPreferences'));
-document.getElementById('modalSettingsSave').addEventListener('click', () => closeModal('modalPreferences'));
+
+document.getElementById('modalSettingsSave').addEventListener('click', async () => {
+    closeModal('modalPreferences')
+
+    await saveUserPreferences(user.email)
+});
+
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
     closeModal('modalLogoutOverlay');
 
