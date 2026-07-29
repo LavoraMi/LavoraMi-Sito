@@ -1,5 +1,6 @@
 (function () {
     const LINE = "M2";
+    const LINE_TYPE = "Metro M2";
 
     const IOS_SCHEME_URL   = `lavorami://linea?nome=${LINE}`;
     const IOS_APPSTORE_URL = "https://apps.apple.com/app/id6760344298";
@@ -7,7 +8,7 @@
     const ANDROID_PLAY_URL = `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE}`;
 
     const ANDROID_INTENT_URL =
-        `intent://linea?nome=${LINE}#Intent;scheme=lavorami;package=${ANDROID_PACKAGE};` +
+        `intent://linea?nome=${LINE}&tipo=${encodeURIComponent(LINE_TYPE)}#Intent;scheme=lavorami;package=${ANDROID_PACKAGE};` +
         `S.browser_fallback_url=${encodeURIComponent(ANDROID_PLAY_URL)};end`;
 
     function detectOS() {
@@ -30,12 +31,12 @@
         window.location.href = IOS_SCHEME_URL;
         setTimeout(function () {
             if (!document.hidden) window.location.href = IOS_APPSTORE_URL;
-        }, 5000);
+        }, 1500);
     } 
     else {
         document.getElementById("spinner").style.display = "none";
         status.textContent = "Apri questa pagina da un dispositivo iOS o Android per essere reindirizzato automaticamente all'app LavoraMi.";
         manualLink.href = "https://lavorami.it";
-        manualLink.textContent = "Torna alla Home";
+        manualLink.textContent = "Vai al sito LavoraMi";
     }
 })();
