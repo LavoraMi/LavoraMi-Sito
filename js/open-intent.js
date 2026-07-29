@@ -30,7 +30,7 @@
         window.location.href = IOS_SCHEME_URL;
         setTimeout(function () {
             if (!document.hidden) window.location.href = IOS_APPSTORE_URL;
-        }, 1500);
+        }, 5000);
     } 
     else {
         document.getElementById("spinner").style.display = "none";
