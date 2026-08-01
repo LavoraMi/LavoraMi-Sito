@@ -36,10 +36,15 @@ function aggiornaImmaginiTema() {
 }
 
 let currentOS = "Android";
-const isIOSorIPad = /iPhone|iPad|iPod/i.test(navigator.userAgent)
-const isModernIPad = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
 
-if (isIOSorIPad || isModernIPad) currentOS = "ios";
+const isIOSorIPad = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+const isModernIPad = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+const isMacDesktop = navigator.platform === 'MacIntel' && navigator.maxTouchPoints === 0;
+
+if (isIOSorIPad || isModernIPad || isMacDesktop) currentOS = "ios"; 
+else currentOS = "Android";
+
+switchOS(currentOS);
 
 switchOS(currentOS)
 
