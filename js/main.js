@@ -24,6 +24,8 @@ window.addEventListener('load', () => {
         themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
         localStorage.setItem('theme', 'dark');
     }
+
+    updateLavoriCounter();
 });
 
 //*THEME TOGGLE
@@ -116,3 +118,23 @@ themeToggle.addEventListener('click', () => {
 });
 
 document.getElementById("accountButton").addEventListener("click", () => {window.location.href = "account/login"});
+
+//*LAVORI COUNTER
+///In this section we count all of our works into the cdn for the counter text
+
+function updateLavoriCounter() {
+    const el = document.getElementById('lavoriCounter');
+    if (!el) return;
+    const numberSpan = el.querySelector('.lavori-number');
+    numberSpan.textContent = '...';
+    fetch('https://cdn.lavorami.it/lavoriAttuali.json')
+        .then(r => r.ok ? r.json() : Promise.reject('Errore HTTP'))
+        .then(data => {
+            numberSpan.textContent = data.length;
+        })
+        .catch(() => {
+            numberSpan.textContent = '?';
+            numberSpan.style.color = '#ffc107';
+            numberSpan.style.webkitTextFillColor = '#ffc107';
+        });
+}
