@@ -226,7 +226,7 @@ const i18n = {
         "help.contact.desc": "Found a bug or want to suggest a feature? Write to us and we'll get back to you as soon as possible.",
         "help.contact.btn": "Send an email",
         "help.bug.title": "Found a problem?",
-        "help.bug.desc": "Report bugs, wrong info or issues — you're helping us improve the app for all commuters.",
+        "help.bug.desc": "Report bugs, wrong info or issues. You're helping us improve the app for all commuters.",
         "help.bug.btn": "Report a problem",
 
         "support.title": "Support us.",
