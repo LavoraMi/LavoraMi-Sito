@@ -846,3 +846,17 @@ body.light-mode .os-toggle-btn.active { color: #fff; }
     -webkit-text-fill-color: transparent !important;
     color: transparent !important;
 }
+
+body.light-mode #help .btn-outline-light,
+body.light-mode #helpUs .btn-outline-light {
+    color: #1a1a1a;
+    border-color: rgba(0, 0, 0, 0.45);
+}
+body.light-mode #help .btn-outline-light:hover,
+body.light-mode #help .btn-outline-light:focus,
+body.light-mode #helpUs .btn-outline-light:hover,
+body.light-mode #helpUs .btn-outline-light:focus {
+    color: #ffffff;
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+}
