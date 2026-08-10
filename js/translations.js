@@ -7,6 +7,7 @@ const i18n = {
         "nav.contacts": "Contatti",
         "nav.support": "Supportaci",
 
+        "hero.lavoriAttivi": "LAVORI ATTIVI",
         "hero.eyebrow": "Mai più disinformato",
         "hero.title.white": "Il viaggio perfetto<br>inizia ",
         "hero.title.red": "informandosi",
@@ -128,6 +129,7 @@ const i18n = {
         "nav.contacts": "Contact",
         "nav.support": "Support Us",
 
+        "hero.lavoriAttivi": "ACTIVE WORKS",
         "hero.eyebrow": "Never be out of the loop again",
         "hero.title.white": "The perfect commute<br>starts ",
         "hero.title.red": "informed",
