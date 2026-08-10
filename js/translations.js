@@ -112,7 +112,7 @@ const i18n = {
         "support.subtitle": "Aiuta lo sviluppo di LavoraMi con qualche euro al mese.",
         "support.patreon.desc": "Puoi effettuare una donazione attraverso il nostro Patreon, sottoscrivendoti ad un abbonamento da pochi euro al mese.",
         "support.patreon.btn": "Abbonati al Patreon",
-        "support.coffee.desc": "Regalaci un caffè al mese per mantenere LavoraMi priva di pubblicità e di abbonamenti!",
+        "support.coffee.desc": "Regalaci un caffè al mese per mantenere LavoraMi priva di abbonamenti e gratis per tutti!",
 
         "footer.tagline": "Aggiornati, Sempre.",
         "footer.privacy": "Privacy Policy",
@@ -233,7 +233,7 @@ const i18n = {
         "support.subtitle": "Help LavoraMi grow with a few euros a month.",
         "support.patreon.desc": "You can make a donation through our Patreon by subscribing to a plan for just a few euros a month.",
         "support.patreon.btn": "Subscribe on Patreon",
-        "support.coffee.desc": "Buy us a coffee a month to keep LavoraMi free from ads and subscriptions!",
+        "support.coffee.desc": "Treat us to a coffee each month to help keep LavoraMi subscription-free and free for everyone!",
 
         "footer.tagline": "Updated, Always.",
         "footer.privacy": "Privacy Policy",
