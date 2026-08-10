@@ -862,6 +862,7 @@ body.light-mode #helpUs .btn-outline-light:focus {
 }
 
 #lavoriCounter {
+    font-family: 'Stack Sans Headline', sans-serif !important;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -903,5 +904,6 @@ body.light-mode #helpUs .btn-outline-light:focus {
     min-width: 2.5rem;
     text-align: center;
     animation: pulseNumber 2s ease-in-out infinite;
+    font-family: 'Inter', sans-serif !important;
     line-height: 1.2;
 }
