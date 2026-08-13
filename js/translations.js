@@ -1,7 +1,7 @@
 const i18n = {
     it: {
         "nav.features": "Funzionalità",
-        "nav.screenshots": "Guarda L'app",
+        "nav.screenshots": "Guarda l'app",
         "nav.about": "Chi siamo",
         "nav.keyFeatures": "Funzioni chiave",
         "nav.contacts": "Contatti",
@@ -24,7 +24,7 @@ const i18n = {
         "features.construction.title": "Fermata Cantieri",
         "features.construction.desc": "Non solo \"lavori in via\", ti spieghiamo che tipo di lavoro si sta svolgendo ed anche le conseguenze che può portare quel cantiere (Deviazioni, Fermate Sospese...)",
         "features.updates.title": "Aggiornato, Sempre.",
-        "features.updates.desc": "Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un Venerdì no.",
+        "features.updates.desc": "Ti avvisiamo il giorno prima della fine dei lavori, quando spuntano nuovi cantieri sulla tua linea preferita ed anche quando sarà un venerdì no.",
         "features.interchanges.title": "Visualizza gli Interscambi",
         "features.interchanges.desc": "Visualizza le linee che interscambiano con la TUA linea, oppure sui bus visualizza dove fanno capolinea con una fermata di interscambio.",
         "features.favorites.title": "Scegli la tua linea",
@@ -89,7 +89,7 @@ const i18n = {
         "keyfeatures.filter.clear.title": "Lavori chiari",
         "keyfeatures.filter.clear.desc": "Sai perfettamente la tratta sospesa o la fermata spostata.",
         "keyfeatures.filter.yourlines.title": "Guarda le TUE linee",
-        "keyfeatures.filter.yourlines.desc": "Non cercarla tra miliardi di schermate, c'è l'hai a portata di filtro.",
+        "keyfeatures.filter.yourlines.desc": "Non cercarla tra miliardi di schermate, ce l'hai a portata di filtro.",
 
         "help.title": "Serve aiuto?",
         "help.subtitle": "Siamo qui per aiutarti. Consulta le risposte rapide o contattaci direttamente.",
