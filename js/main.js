@@ -109,7 +109,8 @@ themeToggle.addEventListener('click', () => {
     if (body.classList.contains('light-mode')) {
         themeIcon.classList.replace('bi-sun-fill', 'bi-moon-stars-fill');
         localStorage.setItem('theme', 'light');
-    } else {
+    } 
+    else {
         themeIcon.classList.replace('bi-moon-stars-fill', 'bi-sun-fill');
         localStorage.setItem('theme', 'dark');
     }
@@ -134,7 +135,7 @@ function updateLavoriCounter() {
         })
         .catch(() => {
             numberSpan.textContent = '?';
-            numberSpan.style.color = '#ffc107';
-            numberSpan.style.webkitTextFillColor = '#ffc107';
+            numberSpan.style.color = '#740303';
+            numberSpan.style.webkitTextFillColor = '#740303';
         });
 }
