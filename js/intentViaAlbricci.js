@@ -1,6 +1,6 @@
 (function () {
-    const LINE = "12";
-    const LINE_TYPE = "Tram 12";
+    const LINE = "19";
+    const LINE_TYPE = "Tram 19";
 
     const IOS_SCHEME_URL   = `lavorami://linea?nome=${LINE}`;
     const IOS_APPSTORE_URL = "https://apps.apple.com/app/id6760344298";
