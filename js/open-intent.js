@@ -1,10 +1,7 @@
-(function () {
-    const LINE = "M2";
-    const LINE_TYPE = "Metro M2";
-
-    const IOS_SCHEME_URL   = `lavorami://linea?nome=${LINE}`;
+function openIntent(LINE, LINE_TYPE) {
+    const IOS_SCHEME_URL= `lavorami://linea?nome=${LINE}`;
     const IOS_APPSTORE_URL = "https://apps.apple.com/app/id6760344298";
-    const ANDROID_PACKAGE  = "com.andreafilice.lavorami";
+    const ANDROID_PACKAGE = "com.andreafilice.lavorami";
     const ANDROID_PLAY_URL = `https://play.google.com/store/apps/details?id=${ANDROID_PACKAGE}`;
 
     const ANDROID_INTENT_URL =
@@ -12,9 +9,11 @@
         `S.browser_fallback_url=${encodeURIComponent(ANDROID_PLAY_URL)};end`;
 
     function detectOS() {
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (/android/i.test(ua)) return "android";
-        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return "ios";
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        if (/android/i.test(userAgent)) return "android";
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) return "ios";
+
         return "other";
     }
 
@@ -29,6 +28,7 @@
     else if (os === "ios") {
         manualLink.href = IOS_SCHEME_URL;
         window.location.href = IOS_SCHEME_URL;
+        
         setTimeout(function () {
             if (!document.hidden) window.location.href = IOS_APPSTORE_URL;
         }, 1500);
@@ -39,4 +39,4 @@
         manualLink.href = "https://lavorami.it";
         manualLink.textContent = "Vai al sito LavoraMi";
     }
-})();
+}

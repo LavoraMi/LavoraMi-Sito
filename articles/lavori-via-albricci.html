@@ -25,6 +25,14 @@
             <p id="status">Stiamo mostrandoti i lavori delle vie Albricci e Mazzini.<br>Se non accade nulla, tocca il pulsante qui sotto.</p>
             <a class="btn" id="manualLink" href="#">Apri nell'app</a>
         </div>
-        <script src="../js/intentViaAlbricci.js"></script>
+        <script src="../js/open-intent.js"></script>
+        <script>
+            const LINE = "19";
+            const LINE_TYPE = "Tram 19";
+
+            window.onload = () => {
+                openIntent(LINE, LINE_TYPE);
+            };
+        </script>
     </body>
 </html>
