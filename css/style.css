@@ -588,6 +588,13 @@ body.light-mode .input-group-waitlist {background: rgba(0, 0, 0, 0.03);}
     visibility: visible;
 }
 
+@media (max-width: 768px) {
+    #screenshots::before,
+    #screenshots::after {
+        display: none;
+    }
+}
+
 .team-img{
     width: 70px;
     height: 70px;
