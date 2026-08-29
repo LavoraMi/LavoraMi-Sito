@@ -233,6 +233,9 @@ const i18n = {
         "help.bug.title": "Found a problem?",
         "help.bug.desc": "Report bugs, wrong info or issues. You're helping us improve the app for all commuters.",
         "help.bug.btn": "Report a problem",
+        "help.info.title": "Have you spotted any incorrect information?",
+        "help.info.desc": "Let us know what’s wrong via our helpline for reporting incorrect information.",
+        "help.info.btn": "Report incorrect information",
 
         "support.title": "Support us.",
         "support.subtitle": "Help LavoraMi grow with a few euros a month.",
