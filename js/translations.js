@@ -108,6 +108,9 @@ const i18n = {
         "help.bug.title": "Hai trovato un problema?",
         "help.bug.desc": "Segnalaci bug, informazioni errate o disservizi: ci aiuti a migliorare l'app per tutti i pendolari.",
         "help.bug.btn": "Segnala un problema",
+        "help.info.title": "Hai trovato un informazione errata?",
+        "help.info.desc": "Segnalaci cosa non va, attraverso il nostro cento assistenza per segnalazioni informazioni sbagliate.",
+        "help.info.btn": "Segnala un' informazione errata",
 
         "support.title": "Supportaci.",
         "support.subtitle": "Aiuta lo sviluppo di LavoraMi con qualche euro al mese.",
