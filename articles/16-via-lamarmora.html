@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LavoraMi - Il tram 16 devia fino alla fine dell'anno</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/article.css">
+    </head>
+    <body>
+        <div class="card">
+            <div class="badge" style="background-color: rgb(255, 149, 0);">16</div>
+            <div class="spinner" id="spinner"></div>
+            <h1>Apertura in LavoraMi…</h1>
+            <p id="status">Stiamo mostrandoti i lavori sulla linea 16 per la costruzione della preferenziale in Viale Umbria.<br>Se non accade nulla, tocca il pulsante qui sotto.</p>
+            <a class="btn" id="manualLink" href="#">Apri nell'app</a>
+        </div>
+        <script src="../js/open-intent.js"></script>
+        <script>
+            const LINE = "16";
+            const LINE_TYPE = "Tram 16";
+
+            window.onload = () => {
+                openIntent(LINE, LINE_TYPE);
+            };
+        </script>
+    </body>
+</html>
