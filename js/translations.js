@@ -16,6 +16,7 @@ const i18n = {
         "store.availableOn": "Disponibile su",
         "hero.qrIntro": '<i class="bi bi-phone"></i> Scansiona dal telefono per scaricare direttamente',
         "hero.disclaimer": "Linee Supportate: ATM, Autoguidovie, Movibus, Nordest Trasporti*, STAR Mobility, STAV, TILO, Trenord.",
+        "hero.descDisclaimer": "* in arrivo nelle prossime versioni.",
 
         "features.title": "Le funzioni.",
         "features.subtitle": "Progettata specificamente per chi si muove nell'area metropolitana di Milano.",
@@ -145,6 +146,7 @@ const i18n = {
         "store.availableOn": "Available on",
         "hero.qrIntro": '<i class="bi bi-phone"></i> Scan from your phone to download directly',
         "hero.disclaimer": "Supported Lines: ATM, Autoguidovie, Movibus, Nordest Trasporti*, STAR Mobility, STAV, TILO, Trenord.",
+        "hero.descDisclaimer": "* coming in future versions.",
 
         "features.title": "The features.",
         "features.subtitle": "Designed specifically for people who commute in the Milan metropolitan area.",
