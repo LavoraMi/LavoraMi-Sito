@@ -15,7 +15,7 @@ const i18n = {
         "hero.subtitle": "Scopri in anticipo cantieri, deviazioni e scioperi sulla tua linea. Evita le sorprese prima di arrivare in stazione.",
         "store.availableOn": "Disponibile su",
         "hero.qrIntro": '<i class="bi bi-phone"></i> Scansiona dal telefono per scaricare direttamente',
-        "hero.disclaimer": "* Disponibile per linee Trenord, ATM, Movibus e altre.",
+        "hero.disclaimer": "Linee Supportate: ATM, Autoguidovie, Movibus, Nordest Trasporti*, STAR Mobility, STAV, TILO, Trenord.",
 
         "features.title": "Le funzioni.",
         "features.subtitle": "Progettata specificamente per chi si muove nell'area metropolitana di Milano.",
@@ -144,7 +144,7 @@ const i18n = {
         "hero.subtitle": "Find out in advance about roadworks, diversions and strikes on your line. Avoid surprises before you reach the station.",
         "store.availableOn": "Available on",
         "hero.qrIntro": '<i class="bi bi-phone"></i> Scan from your phone to download directly',
-        "hero.disclaimer": "* Available for Trenord, ATM, Movibus and other lines.",
+        "hero.disclaimer": "Supported Lines: ATM, Autoguidovie, Movibus, Nordest Trasporti*, STAR Mobility, STAV, TILO, Trenord.",
 
         "features.title": "The features.",
         "features.subtitle": "Designed specifically for people who commute in the Milan metropolitan area.",
