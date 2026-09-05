@@ -7,7 +7,7 @@ const i18n = {
         "nav.support": "Supportaci",
 
         "hero.lavoriAttivi": "LAVORI ATTIVI",
-        "hero.eyebrow": "Mai più disinformato",
+        "hero.eyebrow": "Non essere l'ultimo a sapere le cose.",
         "hero.title.white": "Il viaggio perfetto<br>inizia ",
         "hero.title.red": "informandosi",
         "hero.title.dot": ".",
@@ -119,7 +119,7 @@ const i18n = {
         "nav.support": "Support Us",
 
         "hero.lavoriAttivi": "ACTIVE WORKS",
-        "hero.eyebrow": "Never be out of the loop again",
+        "hero.eyebrow": "Don’t be the last to find out.",
         "hero.title.white": "The perfect commute<br>starts ",
         "hero.title.red": "informed",
         "hero.title.dot": ".",
