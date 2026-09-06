@@ -119,7 +119,7 @@ const i18n = {
         "nav.support": "Support Us",
 
         "hero.lavoriAttivi": "ACTIVE WORKS",
-        "hero.eyebrow": "Don’t be the last to find out.",
+        "hero.eyebrow": "Don’t be the last to find out. ",
         "hero.title.white": "The perfect commute<br>starts ",
         "hero.title.red": "informed",
         "hero.title.dot": ".",
