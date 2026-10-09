@@ -8,6 +8,10 @@ function openIntent(LINE, LINE_TYPE) {
         `intent://linea?nome=${LINE}&tipo=${encodeURIComponent(LINE_TYPE)}#Intent;scheme=lavorami;package=${ANDROID_PACKAGE};` +
         `S.browser_fallback_url=${encodeURIComponent(ANDROID_PLAY_URL)};end`;
 
+    const ANDROID_HOME = 
+        `intent://home#Intent;scheme=lavorami;package=${ANDROID_PACKAGE};` +
+        `S.browser_fallback_url=${encodeURIComponent(ANDROID_PLAY_URL)};end`;
+
     function detectOS() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -21,13 +25,25 @@ function openIntent(LINE, LINE_TYPE) {
     const manualLink = document.getElementById("manualLink");
     const status = document.getElementById("status");
 
-    if (os === "android") {
+    if (os === "android" && LINE != "home") {
         manualLink.href = ANDROID_INTENT_URL;
         window.location.href = ANDROID_INTENT_URL;
     } 
-    else if (os === "ios") {
+    else if (os === "android" && LINE == "home") {
+        manualLink.href = ANDROID_HOME;
+        window.location.href = ANDROID_HOME;
+    } 
+    else if (os === "ios" && LINE != "home") {
         manualLink.href = IOS_SCHEME_URL;
         window.location.href = IOS_SCHEME_URL;
+        
+        setTimeout(function () {
+            if (!document.hidden) window.location.href = IOS_APPSTORE_URL;
+        }, 1500);
+    } 
+    else if (os === "ios" && LINE == "home") {
+        manualLink.href = "lavorami://home";
+        window.location.href = "lavorami://home";
         
         setTimeout(function () {
             if (!document.hidden) window.location.href = IOS_APPSTORE_URL;
