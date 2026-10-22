@@ -43,6 +43,9 @@
                 <div id="userInfoData" class="alert alert-info alert-message d-none" role="alert">
                     Per poter richiedere i dati del tuo <strong>Account LavoraMi</strong>, effettua prima l'accesso.
                 </div>
+                <div id="warningDialog" class="alert alert-info alert-warning d-block" role="alert">
+                    Attualmente il login con il tuo <strong>Account LavoraMi</strong> tramite il sito web non è disponibile.
+                </div>
                 <div id="successMessage" class="alert alert-success alert-message d-none" role="alert">
                     <i class="bi bi-check-circle"></i> Login effettuato con successo!
                 </div>
@@ -69,11 +72,11 @@
                         </div>
                     </div>
                     <p>Continuando, accetti i <a href="/termsOfService">Termini di Servizio</a> e la <a href="/privacypolicy">Privacy Policy</a>.</p>
-                    <button type="submit" class="btn btn-accent w-100" id="submitBtn">Accedi</button><br><br>
+                    <button type="submit" class="btn btn-accent w-100" id="submitBtn" disabled>Accedi</button><br><br>
                     <h5>Accedi con</h5>
                     <hr>
-                    <button class="btn btn-white w-100" id="googleLogin"><img src="../img/google_logo.webp" alt="Sign In with Google" width="25px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Google</button><br>
-                    <button class="btn btn-black w-100" id="appleLogin"><img src="../img/apple_logo.webp" alt="Sign In with Apple" width="25px" height="25px" style="display: inline;">&nbsp;&nbsp;Accedi con Apple</button><br>
+                    <button class="btn btn-white w-100" id="googleLogin"><img src="../img/google_logo.webp" alt="Sign In with Google" width="25px" height="25px" style="display: inline;" disabled>&nbsp;&nbsp;Accedi con Google</button><br>
+                    <button class="btn btn-black w-100" id="appleLogin"><img src="../img/apple_logo.webp" alt="Sign In with Apple" width="25px" height="25px" style="display: inline;" disabled>&nbsp;&nbsp;Accedi con Apple</button><br>
                     <div style="display: flex; gap: 15px;">
                         <div id="passwordRecovery" class="text-danger mt-2 small d-block" style="cursor: pointer;">
                             <i class="bi bi-question-circle-fill"></i> Password Dimenticata?
