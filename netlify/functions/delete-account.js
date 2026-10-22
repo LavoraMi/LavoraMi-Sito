@@ -1,10 +1,3 @@
-const { createClient } = require('@supabase/supabase-js');
-
-const supabaseAdmin = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
-
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return {
@@ -14,35 +7,60 @@ exports.handler = async (event) => {
   }
 
   try {
+    const supabaseUrl = process.env.SUPABASE_URL;
+    const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+    if (!supabaseUrl || !serviceRoleKey) {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Variabili d\'ambiente SUPABASE_URL o SUPABASE_SERVICE_ROLE_KEY mancanti su Netlify.' }),
+      };
+    }
+
     const authHeader = event.headers.authorization || event.headers.Authorization;
     const token = authHeader?.replace('Bearer ', '');
 
     if (!token) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ error: 'Autorizzazione negata: token di sessione mancante' }),
+        body: JSON.stringify({ error: 'Token di sessione mancante.' }),
       };
     }
 
-    const { data: { user }, error: authError } = await supabaseAdmin.auth.getUser(token);
+    const userResponse = await fetch(`${supabaseUrl}/auth/v1/user`, {
+      method: 'GET',
+      headers: {
+        'apikey': serviceRoleKey,
+        'Authorization': `Bearer ${token}`
+      }
+    });
 
-    if (authError || !user) {
+    if (!userResponse.ok) {
       return {
         statusCode: 401,
-        body: JSON.stringify({ error: 'Sessione non valida o scaduta' }),
+        body: JSON.stringify({ error: 'Sessione utente non valida o scaduta.' }),
       };
     }
 
-    const { error: deleteError } = await supabaseAdmin.auth.admin.deleteUser(user.id);
+    const user = await userResponse.json();
+    const deleteResponse = await fetch(`${supabaseUrl}/auth/v1/admin/users/${user.id}`, {
+      method: 'DELETE',
+      headers: {
+        'apikey': serviceRoleKey,
+        'Authorization': `Bearer ${serviceRoleKey}`
+      }
+    });
 
-    if (deleteError) {
-      throw deleteError;
+    if (!deleteResponse.ok) {
+      const errData = await deleteResponse.json();
+      throw new Error(errData.msg || errData.message || 'Errore durante l\'eliminazione su Supabase');
     }
 
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Account eliminato con successo' }),
     };
+
   } 
   catch (err) {
     return {
