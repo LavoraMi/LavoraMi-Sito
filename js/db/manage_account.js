@@ -1,4 +1,4 @@
-let supabaseClient, supabaseAdmin;
+let supabaseClient;
 let user, userEmail;
 
 //*SHOW ERROR TEXT
@@ -27,24 +27,15 @@ window.addEventListener('load', async () => {
     }, 500); 
 
     //*CREATE THE CLIENT
-    ///Get the SECRETS ENV variables from the Netlify Functions correctly
-    const res = await fetch('/.netlify/functions/get-secret');
-    const { SUPABASE_SERVICE_ROLE_KEY } = await res.json();
-
     supabaseClient = window.supabase.createClient(
         window.ENV.SUPABASE_URL,
         window.ENV.SUPABASE_ANON_KEY
     );
 
-    supabaseAdmin = window.supabase.createClient(
-        window.ENV.SUPABASE_URL,
-        SUPABASE_SERVICE_ROLE_KEY
-    )
-
     //*CREARE THE OTP REQUEST
     ///In this section we evaluate the TokenHash from the Request after the '?' params.
     ///If no tokenHash is found, fallback to "no TokenHash" error.
-    const { data, error } = await supabaseClient.auth.getSession()
+    const { data, error } = await supabaseClient.auth.getSession();
 
     console.log('[ℹ️INFO] Errors: ', JSON.stringify(error));
 
@@ -62,7 +53,7 @@ window.addEventListener('load', async () => {
 
     if (!session) {
         showError('Sessione utente non valida.');
-        window.location.href = "/account/login"
+        window.location.href = "/account/login";
         return;
     }
 
@@ -79,22 +70,22 @@ window.addEventListener('load', async () => {
         document.getElementById('loggedInWithApple').style.display = (providerType === "apple") ? "display" : "none";
     }
     catch(error){
-        console.log("[ℹ️INFO]: " + error)
+        console.log("[ℹ️INFO]: " + error);
     }
 
     console.log('[ℹ️INFO] User: ', user.email);
-    userEmail = user.email
+    userEmail = user.email;
 
     const displayName = user.user_metadata?.display_name || user.user_metadata?.full_name || "Utente";
-    console.log("[ℹ️INFO] UserName: " + displayName)
-    extractInitials(displayName)
+    console.log("[ℹ️INFO] UserName: " + displayName);
+    extractInitials(displayName);
 
     document.getElementById("userFullName").innerHTML = displayName;
     document.getElementById("userEmail").innerHTML = user.email;
     document.getElementById("displayFirstName").innerHTML = displayName;
 
-    document.getElementById("sliderFavorites").checked = (await fetchUserPreferences(user.email)).enable_favorites
-    document.getElementById("sliderYourLines").checked = (await fetchUserPreferences(user.email)).enable_your_lines
+    document.getElementById("sliderFavorites").checked = (await fetchUserPreferences(user.email)).enable_favorites;
+    document.getElementById("sliderYourLines").checked = (await fetchUserPreferences(user.email)).enable_your_lines;
 });
 
 //* FETCH USER PREFERENCES
@@ -142,11 +133,11 @@ async function saveUserPreferences(userEmail) {
 }
 
 function extractInitials(nickname) {
-    let values = nickname.split(' ')
+    let values = nickname.split(' ');
     let finalLetters;
 
-    if(values.length == 0) finalLetters = "?"
-    else if(values.length == 1) finalLetters = nickname.charAt(0)
+    if(values.length == 0) finalLetters = "?";
+    else if(values.length == 1) finalLetters = nickname.charAt(0);
     else finalLetters = values[0].charAt(0) + values[1].charAt(0);
 
     document.getElementById("initials").innerText = finalLetters;
@@ -164,9 +155,9 @@ function openModal(overlayId, msg, title, iconName) {
     document.getElementById("modal_icon_success").className = iconName;
 }
 
-function closeModal(overlayId) {document.getElementById(overlayId).classList.remove('open');}
+function closeModal(overlayId) { document.getElementById(overlayId).classList.remove('open'); }
 
-document.getElementById("editPassword").addEventListener("click", async () => {openModal("modalLogoutOverlay", "Ti invieremo una mail per modificare la tua password, vuoi continuare?", "Modifica Password", "bi bi-envelope-open-fill")})
+document.getElementById("editPassword").addEventListener("click", async () => { openModal("modalLogoutOverlay", "Ti invieremo una mail per modificare la tua password, vuoi continuare?", "Modifica Password", "bi bi-envelope-open-fill"); });
 
 //*OPEN MODAL METHODS
 ///In this section, we call the addEventListener event to open the Modal.
@@ -180,9 +171,8 @@ document.getElementById('modalSuccessClose').addEventListener('click', () => clo
 document.getElementById('modalSettingsClose').addEventListener('click', () => closeModal('modalPreferences'));
 
 document.getElementById('modalSettingsSave').addEventListener('click', async () => {
-    closeModal('modalPreferences')
-
-    await saveUserPreferences(userEmail)
+    closeModal('modalPreferences');
+    await saveUserPreferences(userEmail);
 });
 
 document.getElementById('modalLogoutConfirm').addEventListener('click', async () => {
@@ -197,34 +187,48 @@ document.getElementById('modalLogoutConfirm').addEventListener('click', async ()
 });
 
 async function signOut(){
-    const { error } = await supabaseClient.auth.signOut()
+    const { error } = await supabaseClient.auth.signOut();
 
     if(error) {
         showError('Si è verificato un errore imprevisto: ' + error.message);
         return;
     }
 
-    window.location.href = "/account/login"
+    window.location.href = "/account/login";
 }
 
 async function requestPassword(){
     const email = document.getElementById("userEmail").innerHTML;
 
-    const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email)
+    const { data, error } = await supabaseClient.auth.resetPasswordForEmail(email);
 
     if(error) {
         showError('Si è verificato un errore imprevisto: ' + error.message);
         return;
     }
 
-    openModal('modalSuccess', "Controlla la tua casella di posta! Ti abbiamo inviato l'Email che hai richiesto.", "Email inviata", "bi bi-envelope-check-fill")
+    openModal('modalSuccess', "Controlla la tua casella di posta! Ti abbiamo inviato l'Email che hai richiesto.", "Email inviata", "bi bi-envelope-check-fill");
 }
 
 async function deleteAccount(){
-    const { data, error } = await supabaseAdmin.auth.admin.deleteUser(user.id)
+    const { data: { session } } = await supabaseClient.auth.getSession();
 
-    if(error) {
-        showError('Si è verificato un errore imprevisto: ' + error.message);
+    if (!session) {
+        showError('Sessione utente non valida.');
+        return;
+    }
+    
+    const res = await fetch('/.netlify/functions/delete-account', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${session.access_token}`
+        }
+    });
+
+    const result = await res.json();
+
+    if (!res.ok) {
+        showError('Si è verificato un errore imprevisto: ' + (result.error || 'Impossibile eliminare l\'account'));
         return;
     }
 
@@ -232,4 +236,4 @@ async function deleteAccount(){
     signOut();
 }
 
-document.getElementById('modalClose').addEventListener('click', () => {closeModal('modalOneButtonOverlay');});
+document.getElementById('modalClose').addEventListener('click', () => { closeModal('modalOneButtonOverlay'); });
