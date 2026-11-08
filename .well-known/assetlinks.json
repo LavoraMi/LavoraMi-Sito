@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls", "delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.andreafilice.lavorami",
+      "sha256_cert_fingerprints": [
+        "58:AC:03:60:52:92:F8:6B:12:D9:F8:B5:C0:4C:65:AB:20:28:18:45:D1:40:B0:3A:73:B5:85:5B:B5:5E:72:DC"
+      ]
+    }
+  }
+]
